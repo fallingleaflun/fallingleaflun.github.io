@@ -1,1049 +1,189 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="fallingleaflun"><meta name="copyright" content="fallingleaflun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="fallingleaflun">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-05-16 22:47:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-<link rel="canonical" href="http://example.com/">
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
 
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo</title>
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-
-
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Hexo</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</header>
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">fallingleaflun</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
-
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/16/linux_note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="fallingleaflun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/16/linux_note/" class="post-title-link" itemprop="url">linux_note</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-05-16 20:52:15 / 修改时间：21:24:07" itemprop="dateCreated datePublished" datetime="2023-05-16T20:52:15+08:00">2023-05-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><ul>
-<li>in order to provide the compile command to intellisense, we have to execute <code>scripts/clang-tools/gen_compile_command.py</code>(run from the root directory of the kernel source tree!!!), and config the output json in c_cpp_properties.json</li>
-</ul>
-<h2 id="qemu"><a href="#qemu" class="headerlink" title="qemu"></a>qemu</h2><p>use ctrl+a then x to exit qemu</p>
-<h2 id="linux-source-in-x86"><a href="#linux-source-in-x86" class="headerlink" title="linux source in x86"></a>linux source in x86</h2><ul>
-<li>compile<ul>
-<li><code>make mrproper</code></li>
-<li><code>make defconfig</code></li>
-<li><code>make menuconfig</code></li>
-<li><code>make -j 4</code></li>
-</ul>
-</li>
-<li>kernel file:<ul>
-<li><code>vmlinux</code>: original kernel ELF</li>
-<li><code>Image</code>: apply objcopy to <code>vmlinux</code> for a binary image</li>
-<li><code>/arch/x86/bzImage</code>: compressed image</li>
-<li><code>System.map</code>(a symbol table)</li>
-</ul>
-</li>
-<li><code>asmlinkage</code>: tells the compiler we use stack to pass the arguments, because we can pass arguments by register in some archs.</li>
-<li><code>__init</code>: will put the object code to .init.text section, for the purpose of ensemble some code to increase the hit rate of cache.</li>
-</ul>
-<h3 id="add-a-syscall-in-x86"><a href="#add-a-syscall-in-x86" class="headerlink" title="add a syscall in x86"></a>add a syscall in x86</h3><ol>
-<li>register a syscall number in <code>arch/x86/entry/syscalls/syscall_64.tbl</code></li>
-<li>declare a syscall function in <code>include/linux/syscalls.h</code></li>
-<li>implements a sycall funcion in <code>kernel/sys.c</code></li>
-<li>recompile the kernel</li>
-<li>use c lib marco <code>unistd.h/_syscalln()</code>(n range from 0-6) to call the syscall or use <code>&lt;sys/syscall.h&gt;/syscall()</code>. The marco will be expanded into a asm embedded c function</li>
-</ol>
-<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><ul>
-<li>Some commands<ul>
-<li><code>lsmod</code></li>
-<li><code>insmod/rmmod</code>: not recommanded</li>
-<li><code>modprobe xxx</code>: recomanded</li>
-<li><code>modinfo</code></li>
-<li><code>depmod</code></li>
-</ul>
-</li>
-<li>add a module(in host)<ol>
-<li>write a module in c</li>
-<li>make and get a <code>.ko</code> file</li>
-<li><code>insmod xxx.ko</code> will add the module to kernel</li>
-</ol>
-</li>
-<li>ps. use <code>dmesg</code> can print the ring buffer</li>
-</ul>
-<h2 id="内核入口"><a href="#内核入口" class="headerlink" title="内核入口"></a>内核入口</h2><ul>
-<li>内核通用(架构无关)入口是<code>init/main.c/start_kernel</code>,但进入内核之前还有一部分架构相关的工作需要bootloader做</li>
-<li>以arm64为例(我看不懂汇编，这个是道听途说的)<ul>
-<li><code>arch\arm64\kernel\vmlinux.lds.S</code>转到<code>head.S</code></li>
-<li><code>arch\arm64\kernel\head.S</code></li>
-<li>上一步具体包括<ul>
-<li><code>preserve_boot_args</code>顾名思义就是按照arm64的标准把boot参数保存到对应的寄存器中，需要注意的是此时没有MMU，也没有页表，需要一些奇怪的<code>adr_l</code>操作</li>
-<li><code>init_kernel_el</code>顾名思义是初始化arm64中的Exception Level概念，这个东西类似于普通模式和特权模式，其实也就是按照标准进行一些寄存器操作</li>
-<li><code>set_cpu_boot_mode_flag</code>是指把刚刚设置的CPU的模式存放在全局变量<code>__boot_cpu_mode</code>中</li>
-<li><code>__create_page_tables</code>是创建boot阶段的页表，大致步骤如下<ul>
-<li>identity mapping:建立内核从<code>KERNEL_START</code>到<code>KERNEL_END</code>的一致性mapping，其实就是把地址等于物理地址的那些虚拟地址mapping到物理地址上去</li>
-<li>kernel space mapping:将kernel running需要的地址（kernel txt、rodata、data、bss等等）进行映射</li>
-</ul>
-</li>
-<li><code>arch/arm64/mm/proc.S/__cpu_setup</code>:主要包括cache和TLB的处理,Memory attributes lookup table的构建,SCTLR_EL1、TCR_EL1的设定</li>
-<li><code>__primary_switch</code>:打开MMU，设置栈(swapper进程的初始化栈帧),异常向量表,BSS段等，最后跳转到<code>init/main.c/start_kernel</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>start_kernel</code>有很多东西而且不同版本可能会变化，不具体讲了，等我看完感兴趣的部分再说，也可以ctrl+f搜”tzl”看看写的注释<ul>
-<li>CPU初始化</li>
-<li>内存管理初始化</li>
-<li>进程管理</li>
-<li>文件系统</li>
-<li>中断</li>
-<li>同步互斥</li>
-<li>时钟</li>
-<li>调试</li>
-<li>cgroup</li>
-<li>其他</li>
-</ul>
-</li>
-</ul>
-<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012294613/category_11730695.html?spm=1001.2014.3001.5482">一个很值得入门的博客</a></p>
-<h3 id="task-struct的内容-仅列出了一部分"><a href="#task-struct的内容-仅列出了一部分" class="headerlink" title="task_struct的内容(仅列出了一部分)"></a>task_struct的内容(仅列出了一部分)</h3><ul>
-<li>状态相关(具体状态见<code>sched.h</code>的<code>Task state bitmask</code>部分)<ul>
-<li><code>state</code>:</li>
-<li><code>exit_state</code>:</li>
-<li><code>flags</code>:</li>
-</ul>
-</li>
-<li>pid相关<ul>
-<li><code>pid</code>:</li>
-<li><code>tpid</code>:线程组id</li>
-<li><code>group_leader</code>:通过clone创建的所有线程的task_struct的group_leader成员，会指向组长的task_struct实例</li>
-</ul>
-</li>
-<li>亲缘关系相关<ul>
-<li><code>real_parent</code>:指向其父进程，如果创建它的父进程不再存在，则指向pid为1的Init进程</li>
-<li><code>parent</code>:指向其父进程，当他终止时，必须向他的父进程发送信号，它的值通常与real_parent相同</li>
-<li><code>children</code>:</li>
-<li><code>sibling</code>:</li>
-</ul>
-</li>
-<li>权限控制相关<ul>
-<li><code>read_cred</code>:说明谁能操作我这个进程</li>
-<li><code>cred</code>:说明这个进程能够操作谁</li>
-</ul>
-</li>
-<li>运行统计相关<ul>
-<li><code>utime</code>:用户态消耗的CPU时间</li>
-<li><code>stime</code>:内核态消耗的CPU时间</li>
-<li><code>nvcsw</code>:自愿上下文切换计数</li>
-<li><code>nivcsw</code>:非自愿上下文切换计数</li>
-<li><code>start_time</code>:进程启动时间，不包括睡眠时间</li>
-<li><code>real_start_time</code>:进程启动时间，包括睡眠时间</li>
-</ul>
-</li>
-<li>调度相关<ul>
-<li><code>on_rq</code>:是否在运行队列上</li>
-<li><code>prio</code>:动态优先级</li>
-<li><code>static_prio</code>:静态优先级</li>
-<li><code>sched_class</code>:调度类</li>
-<li><code>se</code>:普通进程的调用实体</li>
-<li><code>policy</code>:调度策略</li>
-</ul>
-</li>
-<li>信号处理相关<ul>
-<li><code>signal</code>:指向进程的信号描述符</li>
-<li><code>sighand</code>:指向进程的信号处理程序描述符</li>
-<li><code>blocked</code>:表示被阻塞信号的掩码</li>
-<li><code>real_blocked</code>:表示临时掩码</li>
-<li><code>pending</code>:存放私有挂起信号的数据结构</li>
-</ul>
-</li>
-<li>内存管理相关<ul>
-<li><code>mm</code>:进程所拥有的用户空间内存描述符,内核线程的此项为NULL</li>
-<li><code>active_mm</code>:指向进程运行时所使用的内存描述符，对于普通进程而言，这两个指针变量的值相同。但当内核线程进行上下文切换时，让切换进来的线程的active_mm指向刚被调度出去的进程的active_mm(如果进程的mm域不为空)</li>
-</ul>
-</li>
-<li>文件系统相关<ul>
-<li><code>fs</code>:文件系统的数据结构</li>
-<li><code>files</code>:进程当前打开的文件数据结构</li>
-</ul>
-</li>
-<li>内核栈相关<ul>
-<li><code>thread_info</code>:<code>task_struct</code>的补充, 存储体系结构有关的内容</li>
-<li><code>stack</code>:</li>
-<li>用户态与内核态的堆栈切换是需要硬件完成的,sp会保存在另一个栈中，用的也不是同一个寄存器</li>
-</ul>
-</li>
-</ul>
-<h3 id="mm-struct的内容"><a href="#mm-struct的内容" class="headerlink" title="mm_struct的内容"></a>mm_struct的内容</h3><ul>
-<li><code>mm_struct</code>描述了进程的内存信息</li>
-<li><code>mm_types.h</code>对其部分成员做了注释</li>
-<li>对一个<code>mm_struct</code>来说，其众多的<code>vm_area_struct</code>会在ELF文件加载，即<code>load_elf_binary</code>时构造。</li>
-<li>一些奇怪的缩写<ul>
-<li>VSS:Virtual Set Size&#x3D;分配的内存+共享库占用的内存</li>
-<li>RSS:Resident Set Size&#x3D;正在使用的内存+共享库占用的内存</li>
-<li>PSS:Proportional Set Size&#x3D;正在使用的内存+共享库占用的内存&#x2F;共享库的进程个数</li>
-<li>USS:Unique Set Size&#x3D;正在使用的内存</li>
-</ul>
-</li>
-</ul>
-<h3 id="进程初始化"><a href="#进程初始化" class="headerlink" title="进程初始化"></a>进程初始化</h3><ul>
-<li><code>init/main.c</code>的<code>start_kernel</code>函数里面会涉及初始化第一个进程(<code>init_task</code>)的一些逻辑</li>
-<li><code>init_task</code>是<code>extern</code>的，说明已经在其他地方定义过，这个其他地方就是<code>init_task.c</code></li>
-<li><code>start_kernel</code>函数最后会在<code>rest_init</code>中调用<code>kernel_thread</code>函数创建1号进程和2号进程</li>
-<li>三个进程<ul>
-<li>0号进程是系统创建的第一个进程，也是唯一一个没有通过fork或kernel_thread产生的进程，完成加载系统后，演变为idle进程</li>
-<li>1号(<code>kernel_init</code>)进程由idle通过kernel_thread创建，在内核空间完成初始化后，最终会调用init可执行文件，init进程最终会去创建所有的应用进程，是其他用户进程的祖先。</li>
-<li>2号(<code>kthreadd</code>，位于<code>kthread.c</code>中)进程由idle进程通过kernel_thread创建，并始终运行在内核空间，负责所有内核线程的调度和管理，比如<code>kthread_create_on_node</code>函数会往<code>kthread_create_list</code>中插入一个需要创建的请求，然后唤醒<code>kthreadd</code>让他帮忙创建内核线程</li>
-</ul>
-</li>
-</ul>
-<h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><ul>
-<li>linux把POSIX标准的fork()扩展为<code>fork</code>(<code>sys_fork</code>),<code>vfork</code>(<code>sys_vfork</code>)和<code>clone</code>(<code>sys_clone</code>)三个系统调用</li>
-<li><code>sys_fork</code>,<code>sys_vfork</code>,<code>sys_clone</code>,<code>kthread_create</code>都是调用<code>_do_fork()</code>(之后改为<code>fork.c/kernel_clone</code>)</li>
-<li><code>kernel_clone</code>主要工作在<code>copy_process</code>中，<code>copy_process</code>会根据FLAG复制需要的包括寄存器在内的一系列结构，最后得到一个新的<code>task_struct</code></li>
-</ul>
-<h3 id="pid"><a href="#pid" class="headerlink" title="pid"></a>pid</h3><ul>
-<li>内核对pid的抽象:<ul>
-<li><code>struct upid</code><ul>
-<li><code>ns</code>是命名空间</li>
-<li><code>nr</code>是id</li>
-<li>内核用哈希表保存upid</li>
-</ul>
-</li>
-<li><code>struct pid</code><ul>
-<li><code>count</code>: 引用计数，因为可以有多个<code>task_struct</code>共享pid</li>
-<li>TODO:先跳过，之后再补充</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h3><ul>
-<li>用户线程和内核线程<ul>
-<li>用户线程是完全建立在用户空间的线程库(如pthread)，用户线程的创建、调度、同步和销毁全由库函数在用户空间完成，不需要内核的帮助</li>
-<li>在内核可以通过<code>kthread_create_on_node</code>这个API创建一个内核线程</li>
-</ul>
-</li>
-</ul>
-<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><ul>
-<li>two kinds of process:<ol>
-<li>real time process</li>
-<li>normal process</li>
-</ol>
-</li>
-<li>The schedule policy of rt process is <code>SCHED_FIFO</code> or <code>SCHED_RR</code></li>
-<li>The schedule policy of normal process is <code>CFS</code><br>(I just focus on normal process)</li>
-<li><code>rq</code> means runqueue: is a data structure that holds the tasks that are ready to run on that CPU.</li>
-<li>kernel preemption: linux support kernel preemption, which means the scheduler can reschedule when executing an kernel task(内核态的任务可以是内核线程也可以是通过系统调用请求内核服务的用户任务)</li>
-<li>main function: <code>kernel/sched/core.c</code>: <code>__schedule()</code></li>
-<li>when will <code>__schedule()</code> be called?<ol>
-<li>主动调度<br>  睡眠场景，如sleep。<br>  显式阻塞场景，如互斥体，信号量，等待队列，完成量等。<br>  任务退出时，调用do_exit去释放进程资源，最后会调用一次主调度器</li>
-<li>抢占调度</li>
-</ol>
-<ul>
-<li>when interrupted &amp;&amp; <code>TIF_NEED_RESCHED==true</code>, including following situations:</li>
-<li>如果内核是可抢占的<ul>
-<li>重新开启内核抢占</li>
-<li>中断返回内核态的时候</li>
-</ul>
-</li>
-<li>如果内核是不可抢占的<ul>
-<li><code>cond_resched()</code>调用</li>
-<li>显式的<code>schedule()</code>调用</li>
-<li>从系统调用或异常返回到用户空间</li>
-<li>从中断处理器返回到用户空间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>what will <code>__schedule()</code> do?<ol>
-<li>针对当前进程的处理</li>
-<li>选择下一个需要执行的进程(<code>next = pick_next_task(rq, prev, &amp;rf);</code>)</li>
-</ol>
-<ul>
-<li>从红黑树上找到 vruntime 值最小的进程实体，实际上并没有操作红黑树，而是使用的缓存节点，cfs_rq 在每次平衡红黑树的时候都会把最左边的节点缓存起来，以加速当前函数的执行</li>
-</ul>
-<ol start="3">
-<li>执行切换工作(<code>rq = context_switch(rq, prev, next, &amp;rf);</code>)</li>
-</ol>
-<ul>
-<li>hint: 内核是统一的，并不像用户空间一样每个进程享有独立的空间</li>
-<li>整个用户空间的内存布局都是由一个<code>struct mm</code>的结构保存的，对于内核线程而言，并没有所谓的用户空间的概念，其 mm 为 NULL。</li>
-<li>finally we have to call <code>switch_to</code>, this is arch related asm function</li>
-</ul>
-<ol start="4">
-<li>收尾工作</li>
-</ol>
-</li>
-</ul>
-<h2 id="中断与中断处理"><a href="#中断与中断处理" class="headerlink" title="中断与中断处理"></a>中断与中断处理</h2><ul>
-<li>硬件会发出中断(interrupt)，linux会处理这些中断</li>
-<li>linux的中断处理分为上下半(top-half bottom-half)</li>
-<li>上半部需要interrupt handler<ul>
-<li>利用<code>request_irq(...)</code>可以为某个中断号注册一个handler,同一个中断号允许设置多个handler(共享中断),当中断发生的时候，中断子系统会循环调用这个中断号上的所有中断处理函数。此外，需要知道是哪个设备产生的中断，需要我们提供一个参数<code>dev</code></li>
-<li>当执行interrupt handelr时，内核处于中断上下文(interrupt context)，此时不能进行任何可能导致调度器重新调度的操作(比如sleep)</li>
-</ul>
-</li>
-<li>为了需要处理一些耗时操作，会把一些处理的核心逻辑放到下半部中执行<ul>
-<li>softirq: 在中断上下文中</li>
-<li>tasklet: 在中断上下文中，softirq的基础上实现</li>
-<li>workqueue: 一个工作队列，往队列提交任务就会由<code>workqueue_internal.h/worker</code>执行</li>
-</ul>
-</li>
-<li>API<ul>
-<li><code>disable_irq</code>&#x2F;<code>enable_irq</code>:禁止给定的中断</li>
-<li><code>local_irq_save</code>&#x2F;<code>local_irq_restore</code>:关闭当前处理器上所有中断且保存状态</li>
-</ul>
-</li>
-</ul>
-<h2 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h2><ul>
-<li>机制</li>
-<li>原子操作<ul>
-<li>在<code>linux/types.h</code>定义了<code>atomic_t</code></li>
-<li>原子操作的函数定义在<code>asm/atomic.h</code>,函数内部会使用与架构相关的汇编</li>
-</ul>
-</li>
-<li>spinlock<ul>
-<li>也是和架构相关的，操作定义在<code>asm/spinlock.h</code>中，这个也是调用<code>asm/qspinlock.h</code></li>
-</ul>
-</li>
-<li>read-write spinlock</li>
-<li>semaphore</li>
-<li>read-write semaphore</li>
-<li>mutex</li>
-<li>RCU:基本思想是这样的：先创建一个旧数据的copy，然后writer更新这个copy，最后再用新的数据替换掉旧的数据。这样就可以在不加锁的情况下进行读操作，从而提高了并发性能。</li>
-</ul>
-<h2 id="时钟管理"><a href="#时钟管理" class="headerlink" title="时钟管理"></a>时钟管理</h2><ul>
-<li>略过</li>
-</ul>
-<h2 id="用户内存管理"><a href="#用户内存管理" class="headerlink" title="用户内存管理"></a>用户内存管理</h2><ul>
-<li>malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用<ul>
-<li>利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片</li>
-<li>mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放</li>
-</ul>
-</li>
-</ul>
-<h2 id="内核内存管理"><a href="#内核内存管理" class="headerlink" title="内核内存管理"></a>内核内存管理</h2><ul>
-<li>需要注意的是这里讲的不是glibc里面的malloc,那个是用户空间的内存管理，这里讲的是内核空间的内存管理</li>
-<li>概述: linux用page描述页框，伙伴算法+slab(小块的cache)</li>
-</ul>
-<h3 id="Zone"><a href="#Zone" class="headerlink" title="Zone"></a>Zone</h3><ul>
-<li>其实就是给内存划分区域</li>
-<li>MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。</li>
-<li><code>mmzone.h</code>有个<code>enum zone_type</code>定义了这几种zone<ul>
-<li><code>ZONE_DMA</code>: 专供DMA用</li>
-<li><code>ZONE_NORMAL</code>: 直接映射</li>
-<li><code>ZONE_HIGHMEM</code>:高端内存,需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了</li>
-<li><code>ZONE_MOVABLE</code>:放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔</li>
-</ul>
-</li>
-<li><code>zone.free_area</code>:这个就是伙伴系统的那个长度为11的链表数组！</li>
-</ul>
-<h3 id="内核内存管理API"><a href="#内核内存管理API" class="headerlink" title="内核内存管理API"></a>内核内存管理API</h3><ul>
-<li>page相关的API<ul>
-<li><code>struct page *alloc_pages(gfp_t gfp, unsigned order)</code>分配一个$2^{order}$个连续的物理页，返回一个指向第一个page的指针</li>
-<li><code>void *page_address(const struct page *page)</code>根据page指针获取页面所映射的虚拟地址</li>
-</ul>
-</li>
-<li>slab相关的API<ul>
-<li>ps. 内核已经预先建立了一些slab,通过<code>cat /proc/slabinfo</code>可以看到已有的slab</li>
-<li><code>struct kmem_cache * kmem_cache_create(const char *name, unsigned int size, unsigned int align, slab_flags_t flags, void (*ctor)(void *))</code>可以让我们自定义地创建一类slab</li>
-<li><code>void kmem_cache_destroy(struct kmem_cache *)</code>摧毁创建出的slab</li>
-<li><code>void *kmem_cache_alloc(struct kmem_cache *cachep, int flags)</code>从cachep这个slab中分配一个对象</li>
-<li><code>void kmem_cache_free(struct kmem_cache *cachep, void *objp)</code>释放掉刚刚分配的对象</li>
-<li>内核申请内存的API<ul>
-<li><code>static __always_inline void *kmalloc(size_t size, gfp_t flags)</code>返回一个内存块的指针，其大小至少为size,内存是物理连续的</li>
-<li><code>void *vmalloc(unsigned long size)</code>与<code>kmalloc</code>不同之处在于所分配的内存在物理上无需连续</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="伙伴算法"><a href="#伙伴算法" class="headerlink" title="伙伴算法"></a>伙伴算法</h3><ul>
-<li>把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块</li>
-<li>假设要求分配的块的大小为128个页面(由多个页面组成的块叫页面块)，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配; 如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。</li>
-<li><code>page_alloc.c/alloc_pages</code>:最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从<code>rmqueue</code>函数开始看</li>
-<li><code>rmqueue</code>: <ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/502525143">参考</a></li>
-<li>检查是否需要通过per cpu方式进行分配，per cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。</li>
-<li><code>__rmqueue</code>函数里面有一个循环(用goto写的)，这个循环里面调用的<code>__rmqueue_smallest</code>就是伙伴算法的逻辑！</li>
-</ul>
-</li>
-</ul>
-<h3 id="slab"><a href="#slab" class="headerlink" title="slab"></a>slab</h3><ul>
-<li>以对象的观点管理内存</li>
-<li>先利用页面分配器分配出单个或者一组连续的物理页面(称为cache，不是硬件那个cache)，然后在此基础上将整块页面分割成多个相等的小内存单元(称为cache组)，以满足小内存空间分配的需要</li>
-<li>每个组里面都放同一种struct</li>
-<li>实际内核中还有slob&#x2F;slub这另外两种改进机制</li>
-<li><code>slab_def.h/kmem_cache</code>: slab的管理结构，写了一点注释</li>
-<li>linux创建和使用一个slab的过程<ul>
-<li>创建<ul>
-<li><code>slab_commom.c/kmem_cache_create_usercopy</code><ul>
-<li>先用<code>kstrdup_const</code>函数分配一段<code>cache_name</code>的空间用来存放slab的名字</li>
-<li>然后通过<code>create_cache</code>函数创建一个<code>kmem_cache</code></li>
-</ul>
-</li>
-<li><code>create_cache</code>:<ul>
-<li>利用<code>kmem_cache_zalloc</code>分配内核空间以存放<code>kmem_cache</code></li>
-<li>填充<code>kmem_cache</code>的基础信息</li>
-<li>调用<code>__kmem_cache_create</code><ul>
-<li>对齐</li>
-<li><code>freelist</code>的更新操作</li>
-<li>初始化cpu私有数据</li>
-</ul>
-</li>
-<li>将新创建的cache添加到<code>slab_caches</code>链表中</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用<ul>
-<li><code>kmem_cache_alloc</code>是入口，关键在于<code>____cache_alloc</code>函数</li>
-<li><code>____cache_alloc</code>:先通过cpu_cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过<code>cache_alloc_refill</code>获取</li>
-<li><code>cache_alloc_refill</code>:先通过shared中获取，如没有则通过<code>get_first_slab</code>获取，还不够就说明需要申请页了，通过<code>cache_grow_begin</code></li>
-<li><code>cache_grow_begin</code>:向伙伴系统申请连续页框并放入kmem_cache中，然后申请并初始化<code>freelist</code>，然后将slab切分成一个个object(如果slab设置了构造函数<code>ctor</code>的话还会执行这个构造函数)并与freelist匹配起来</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/490588193">参考</a></li>
-<li>slab着色:<br>由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache_location &#x3D; address % cache_size，cache_size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache_location 是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。</li>
-</ul>
-<h3 id="Page内部结构"><a href="#Page内部结构" class="headerlink" title="Page内部结构"></a>Page内部结构</h3><ul>
-<li>CPU是按照byte或word寻址的，但是MMU(是一个硬件)会以页为单位进行处理，不同体系的页大小不一致</li>
-<li>在<code>mm_types.h</code>中定义了<code>struct page</code>,以下仅说明部分成员的意义<ul>
-<li><code>flags</code>:　描述page的状态和其他信息，取值为<code>pageflags</code>,定义在<code>linux/page-flags.h</code>中</li>
-<li><code>第一个union</code>:<ul>
-<li><strong>Page cache and anonymous pages</strong><ul>
-<li><code>lru</code>:<ul>
-<li>详见下面的”LRU”条目</li>
-<li>page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。</li>
-<li>page属于slab时，page-&gt;lru.next指向page驻留的的缓存的管理结构，page-&gt;lru.prec指向保存该page的slab的管理结构。</li>
-<li>page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。</li>
-</ul>
-</li>
-<li><code>mapping</code>:<ul>
-<li>如果mapping &#x3D; 0，说明该page属于交换缓存（swap cache）；当需要使用地址空间时会指定交换分区的地址空间swapper_space。</li>
-<li>如果mapping !&#x3D; 0，bit[0] &#x3D; 0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address_space。</li>
-<li>如果mapping !&#x3D; 0，bit[0] !&#x3D; 0，说明该page为匿名映射，mapping指向struct anon_vma对象。</li>
-</ul>
-</li>
-<li><code>index</code>: 当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype(见set_pcppage_migratetype()函数）</li>
-<li><code>private</code>:看注释吧，主要是如果是PageBuddy的话这个值就是order值</li>
-</ul>
-</li>
-<li><strong>page_pool used by netstack</strong>: dma相关？</li>
-<li><strong>slab, slob and slub</strong><ul>
-<li><code>slab_list</code>: slab链表的头</li>
-<li><code>next</code>: 指向下一个page</li>
-<li><code>pages</code>: 表示当前该CPU partial中slab的数目</li>
-<li><code>pobjects</code>: 表示当前该CPU partial中空闲obj数目</li>
-<li><code>slab_cache</code>: 指向slab描述符 kmem_cache</li>
-<li><code>freelist</code>：指向当前page对应的slab中的第一个空闲obj</li>
-<li><code>s_mem</code>：指向当前page对应的slab中的第一个obj的起始地址</li>
-<li>&#x2F;<em>SLUB</em>&#x2F;都是和slub相关的，跳过了</li>
-</ul>
-</li>
-<li><strong>Tail pages of compound page</strong><ul>
-<li>复合页(compound Page)是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent huge page, 在复合页中，除了第一个page我们叫head page，其余page都是tail page</li>
-<li><code>compound_head</code>：指向复合页的第一个 head页。如果compound_head被设置成head page，则表明该页是复合页的tail页</li>
-<li>下略</li>
-</ul>
-</li>
-<li><strong>Second tail page of compound page</strong><ul>
-<li>还是和复合页相关，略</li>
-</ul>
-</li>
-<li><strong>Page table pages</strong><ul>
-<li>这个结构主要是存储一些跟页表相关的参数。当这个page是用于page table，这些参数会用到</li>
-<li><code>_pt_pad_1</code>：如描述，如果是复合页，这个表示该page对应的head page是哪一个，如果它就是head page，则为0</li>
-<li><code>pmd_huge_pte</code>：pmd和pte在64位中分别是二级页目录和一级页表项。pmd_huge_pte参数描述的应该是pmd到pte之间的页表相关信息</li>
-<li><code>_pt_pad_2</code>：指向页表对应的page的所映射的地址空间</li>
-<li><code>pt_mm</code>：这个是只用于x86，指向页表的pgd</li>
-<li><code>ptl</code>: 这个锁主要用来保护前面pmd_huge_pte，确保使用时，不会前后数据不一致</li>
-</ul>
-</li>
-<li><code>第二个union</code>:<ul>
-<li><code>_mapcount</code>: 被页表映射的次数，也就是说该page同时被多少个进程共享</li>
-<li><code>page_type</code>: 看注释</li>
-<li><code>_refcount</code>: 表示内核中引用该page的次数,当没有被引用的时候值为-1</li>
-</ul>
-</li>
-<li>还有一些和cgroup相关的东西，略</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><ul>
-<li>linux对所有体系结构都是用三级页表的</li>
-<li><code>pgd_t</code>数组:顶级页表，内部元素指向<code>pmd_t</code></li>
-<li><code>pmd_t</code>数组:二级页表，内部元素指向<code>pte_t</code></li>
-<li><code>pte_t</code>:三级页表，指向物理页面</li>
-</ul>
-<h3 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h3><ul>
-<li>linux内核的内存管理中有三个LRU链表<ul>
-<li>Active list: 存放刚访问过的page</li>
-<li>Inactive list: 长时间未访问过的page, 内核线程<code>kswapd</code>会周期性地把Active list中符合条件的页面移到Inactive list中，这项转移工作是由<code>refill_inactive_zone()</code>完成</li>
-<li>Unevictable list</li>
-</ul>
-</li>
-<li>两类page<ul>
-<li>file page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可</li>
-<li>anon page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放</li>
-</ul>
-</li>
-<li>page-out: file page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out</li>
-<li>swap-out: anon page在内存不足时就只能写到硬盘上的交换区(swap)里，称为swap-out</li>
-<li><code>pcp</code>: 冷页表示该空闲页已经不再高速缓存中了(一般是指L2 Cache)，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp</li>
-</ul>
-<h2 id="VFS"><a href="#VFS" class="headerlink" title="VFS"></a>VFS</h2><ul>
-<li>VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了</li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jinking01/article/details/105109089">参考一篇能比较好梳理文件系统脉络的文章</a></li>
-<li>从应用层的<code>open</code>调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统</li>
-<li>说到进程就会想到<code>task_struct</code>，这个结构里面和文件有关的就是<code>struct files_struct *files</code>这个成员</li>
-<li><code>file_struct</code>重要的是<code>fdtable</code>类型的成员</li>
-<li><code>fdtable</code>:里面有个成员<code>fd</code>指向一个rcu数组，数组装的都是<code>struct file</code>类型的指针</li>
-<li><code>struct file</code>:只不过是进程打开文件的上下文信息，并不是文件的本质信息</li>
-<li>告诉我们<code>struct file</code>不是核心数据结构之后又引出了<code>inode</code>和<code>dentry</code></li>
-<li><code>dentry</code>是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。<ul>
-<li>为什么设计这个结构？如果没有这个东西，要打开<code>/usr/bin/vi</code>，我们就要<ol>
-<li>去<code>/</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>usr</code>的inode</li>
-<li>去<code>/usr</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>bin</code>的inode</li>
-<li>去<code>/usr/bin</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>vi</code>的inode</li>
-</ol>
-</li>
-<li>为了加速这个查找过程，我们可以建立文件名到inode的映射，<code>entry</code>就是在干这件事，其成员<code>d_name</code>存放文件名,<code>d_inode</code>存放对应的inode</li>
-<li>此外，为了还要更快，甚至还加上了哈希表</li>
-</ul>
-</li>
-<li><code>inode</code>:这个就是核心啦,但是这篇文章的博主似乎没什么好聊的，就开始聊<code>address_space</code>,说这个<code>address_space</code>里面的<code>page_tree</code>指向一个基数树，这个又涉及了page cache</li>
-</ul>
-<h3 id="比较重要的struct"><a href="#比较重要的struct" class="headerlink" title="比较重要的struct"></a>比较重要的struct</h3><ul>
-<li><code>super_block</code></li>
-<li><code>inode</code></li>
-<li><code>dentry</code></li>
-<li><code>file</code></li>
-<li><code>xxx_operations</code>:类似interface，需要具体文件系统实现</li>
-<li><code>file_system_type</code></li>
-<li><code>vfsmount</code></li>
-<li><code>fs_struct</code></li>
-<li><code>file</code></li>
-</ul>
-<h3 id="super-block"><a href="#super-block" class="headerlink" title="super_block"></a>super_block</h3><ul>
-<li>成员看<code>fs.h/super_block</code>的注释</li>
-<li><code>super.c/alloc_super</code>负责创建<code>super_block</code></li>
-</ul>
-<h3 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h3><ul>
-<li>成员看<code>fs.h/inode</code>的注释</li>
-</ul>
-<h3 id="inode-operations"><a href="#inode-operations" class="headerlink" title="inode_operations"></a>inode_operations</h3><ul>
-<li>成员看<code>fs.h/inode_operations</code>的注释</li>
-</ul>
-<h3 id="dentry"><a href="#dentry" class="headerlink" title="dentry"></a>dentry</h3><ul>
-<li>成员看<code>dcache.h/dentry</code>的注释</li>
-<li><code>dentry</code>有三种状态:<ul>
-<li>used:<code>d_inode</code>指向了一个inode且<code>d_count</code>&gt;0</li>
-<li>unused:<code>d_inode</code>指向了一个inode但<code>d_count</code>&#x3D;0</li>
-<li>negative:<code>d_inode</code>指向NULL(如果系统找到这样的就可以快速确认文件不存在了)</li>
-<li>unused和negative状态的<code>dentry</code>都可以从缓存中被释放</li>
-</ul>
-</li>
-</ul>
-<h3 id="dentry-operations"><a href="#dentry-operations" class="headerlink" title="dentry_operations"></a>dentry_operations</h3><ul>
-<li>成员看<code>dcache.h/dentry_operations</code>的注释</li>
-</ul>
-<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><ul>
-<li>成员看<code>fs.h/file</code>的注释,不注释了。</li>
-</ul>
-<h3 id="file-operations"><a href="#file-operations" class="headerlink" title="file_operations"></a>file_operations</h3><ul>
-<li>成员看<code>fs.h/file_operations</code>的注释</li>
-<li>内核从4.1开始关于AIO的函数就被<code>read_iter</code>和<code>write_iter</code>取代了<ul>
-<li>参数中的<code>iov_iter</code>是个迭代器，</li>
-<li>暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定</li>
-</ul>
-</li>
-</ul>
-<h3 id="file-system-type"><a href="#file-system-type" class="headerlink" title="file_system_type"></a>file_system_type</h3><ul>
-<li>用于描述每种文件系统的功能和行为</li>
-<li>成员看<code>fs.h/file_system_type</code>的注释</li>
-<li>调用<code>register_filesystem</code>注册文件系统对象</li>
-</ul>
-<h2 id="Page-Cache"><a href="#Page-Cache" class="headerlink" title="Page Cache"></a>Page Cache</h2><ul>
-<li>这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中</li>
-<li>三种写缓存的策略<ul>
-<li>不缓存，直接只把某些页写到磁盘中</li>
-<li>写穿，写缓存页同时也写到磁盘中</li>
-<li>写回(writeback)，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback</li>
-</ul>
-</li>
-<li>TODO</li>
-</ul>
-<h2 id="各个机制都了解一遍之后再重新回顾一下main-c"><a href="#各个机制都了解一遍之后再重新回顾一下main-c" class="headerlink" title="各个机制都了解一遍之后再重新回顾一下main.c"></a>各个机制都了解一遍之后再重新回顾一下main.c</h2><h3 id="文件系统的启动流程"><a href="#文件系统的启动流程" class="headerlink" title="文件系统的启动流程"></a>文件系统的启动流程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/_xiao/article/details/46829105">参考</a></p>
-<ul>
-<li>start_kernel做内存初始化，操作系统数据结构初始化，调度系统初始化，各种资源初始化之后会调用vfs_caches_init初始化文件系统</li>
-<li><code>vfs_cache_init</code><ul>
-<li>vfs_cache_init调用inode_init（&#x2F;3.1.10&#x2F;fs&#x2F;inode.c）初始化inode数据结构，就是申请一大片内存，哈希表；</li>
-<li>vfs_cache_init调用files_init（&#x2F;3.1.10&#x2F;fs&#x2F;file_table.c）初始化文件句柄数据结构；</li>
-<li>vfs_cache_init调用mnt_init（&#x2F;3.1.10&#x2F;fs&#x2F;namespace.c）挂载根文件系统”&#x2F;“；</li>
-<li>vfs_cache_init调用bdev_cache_init（&#x2F;3.1.10&#x2F;fs&#x2F;block_dev.c）初始化块设备文件系统；</li>
-<li>vfs_cache_init调用chrdev_init（&#x2F;3.1.10&#x2F;fs&#x2F;char_dev.c）初始化字符设备文件系统。</li>
-</ul>
-</li>
-<li><code>mnt_init</code>：<ul>
-<li>mnt_init调用sysfs_init（&#x2F;3.1.10&#x2F;fs&#x2F;mount.c）注册”sysfs”类型的文件系统<ul>
-<li>sysfs_init调用sysfs_inode_init（&#x2F;3.1.10&#x2F;fs&#x2F;inode.c）<ul>
-<li>sysfs_inode_init调用bdi_init(&amp;sysfs_backing_dev_info)初始化backing_dev（？？？）</li>
-</ul>
-</li>
-<li>sysfs_init调用register_filesystem(&amp;sysfs_fs_type)（&#x2F;3.1.10&#x2F;fs&#x2F;filesystem.c）注册类型为”sysfs”的文件系统<ul>
-<li>register_filesystem将sysfs_fs_type添加到file_systems的全局链表中</li>
-</ul>
-</li>
-<li>sysfs_init再调用kern_mount（&#x2F;3.1.10&#x2F;fs&#x2F;namespace.c）将sysfs_fs_type绑定<ul>
-<li>kern_mount_data调用vfs_kern_mount<ul>
-<li>vfs_kern_mount调用alloc_vfsmnt分配一个mount的数据结构<ul>
-<li>alloc_vfsmnt调用mnt_alloc_id分配一个mount id</li>
-<li>alloc_vfsmnt初始化mount数据结构中的各种链表，包括mnt_hash,mnt_child,mnt_mounts等等</li>
-</ul>
-</li>
-<li>vfs_kern_mount调用mount_fs（&#x2F;3.1.10&#x2F;fs&#x2F;super.c）绑定文件系统，得到一个dentry<ul>
-<li>mount_fs调用file_system_type的mount回调函数执行绑定<ul>
-<li>这里进入sysfs_fs_type的回调也就是sysfs_mount函数<ul>
-<li>sysfs_mount分配私有数据</li>
-<li>sysfs_mount调用sget来获取一个superblock<ul>
-<li>sget调用alloc_super分配superblock<ul>
-<li>alloc_super分配superblock结构</li>
-<li>alloc_super初始化superblock的各种链表和互斥量</li>
-</ul>
-</li>
-<li>sget设置sb的私有数据</li>
-<li>sget将sb的s_id设置为文件系统的名字</li>
-<li>sget将sb添加到全局链表super_blocks中</li>
-<li>sget将此sb添加到文件系统的自身的fs_supers链表中</li>
-</ul>
-</li>
-<li>sysfs_mount调用sysfs_fill_super设置sb的数据<ul>
-<li>sysfs_fill_super设置sb的操作为sysfs_ops</li>
-<li>sysfs_fill_super调用sysfs_get_inode(&amp;sysfs_root)分配一个inode（sysfs_root是预定义的sysfs_dirent类型全局变量，name为“”，ino为1）<ul>
-<li>sysfs_get_inode调用iget_locked<ul>
-<li>iget_locked调用find_inode_fast在sb的已分配的inode哈希表中查找指定ino的inode</li>
-<li>如果找到，会调用wait_on_inode锁住该inode并返回这里显然找不到，所以调用alloc_inode分配inode<ul>
-<li>alloc_inode分配inode节点</li>
-<li>alloc_inode调用inode_init_always初始化inode<ul>
-<li>inode_init_always初始化inode，记录所属sb，初始inode的uid,gid，各种标志，默认操作等</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>iget_locked添加本次查找到inode的哈希链表</li>
-<li>iget_locked添加sb到inode的sb链表</li>
-<li>iget_locked设置I_NEW标志并返回锁定状态下的inode</li>
-</ul>
-</li>
-<li>sysfs_get_inode检测到返回的inode设置了I_NEW标志，调用sysfs_init_inode<ul>
-<li>sysfs_init_inode记录inode所对应的sysfs_dirent为inode的私有数据</li>
-<li>sysfs_init_inode设置inode的inode操作为sysfs_inode_operations(包含权限检查，设置属性，读取属性等操作)</li>
-<li>sysfs_init_inode检查到类型为DIR，重新设置inode的inode操作为sysfs_dir_inode_operations(包含查找，权限检查，设置属性，读取属性等操作)</li>
-<li>sysfs_init_inode设置inode的文件操作为sysfs_dir_operations(包含读，读目录，释放，文件seek等操作)</li>
-<li>sysfs_init_inode调用unlock_new_inode解锁inode，去掉I_NEW标志并返回</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>sysfs_fill_super调用d_alloc_root为inode分配一个根目录的dentry<ul>
-<li>d_alloc_root调用__d_alloc，参数中name为“&#x2F;”，sb为inode的sb</li>
-<li>__d_alloc分配dentry结构</li>
-<li>__d_alloc存储dentry的名称</li>
-<li>__d_alloc初始化dentry的各变量和列表，置操作函数为空</li>
-<li>__d_alloc根据sb的操作函数设置dentry的Hash，比较，删除等标志</li>
-<li>d_alloc_root调用d_instantiate填充dentry的inode信息<ul>
-<li>d_instantiate调用__d_instantiate将inode指针设置到dentry的d_inode中</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>sysfs_fill_super设置新建的dentry的d_fsdata为sysfs_root（包含根目录的目录标志，模式(权限属性)，ino为1）</li>
-<li>sysfs_fill_super设置新建的dentry为sb的根dentry(s_root)</li>
-</ul>
-</li>
-<li>sysfs_mount调用dget来锁定所获得的superblock的dentry并返回此dentry</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>vfs_kern_mount将返回的dentry保存到mount结构的mnt_root中作为该文件系统的根节点，</li>
-<li>vfs_kern_mount记录mount点的sb为dentry的superblock，记录mount的mount_point为dentry，返回所创建的mount结构</li>
-</ul>
-</li>
-<li>kern_mount_data调用mnt_make_longterm记录mount为长期不释放的</li>
-<li>kern_mount_data返回</li>
-</ul>
-</li>
-<li>sysfs_init返回</li>
-</ul>
-</li>
-<li>mnt_init调用init_rootfs（&#x2F;3.1.10&#x2F;fs&#x2F;ramfs&#x2F;inode.c）注册”rootfs”文件系统<ul>
-<li>init_rootfs调用bdi_init(&amp;ramfs_backing_dev_info)添加一个backing_dev（ramfs_backing_dev_info中描述了ramfs文件系统的能力(如WRITEBACK等)）</li>
-<li>inti_rootfs调用register_filesystem(&amp;rootfs_fs_type)注册名称为”rootfs”的文件系统</li>
-</ul>
-</li>
-<li>mnt_init调用init_mount_tree（&#x2F;3.1.10&#x2F;fs&#x2F;namespace.c）绑定“rootfs”文件系统并设置当前工作目录为rootfs的根目录<ul>
-<li>init_mount_tree调用do_kern_mount绑定”rootfs”文件系统<ul>
-<li>do_kern_mount先调用get_fs_type得到先前注册的rootfs文件系统</li>
-<li>do_kern_mount调用vfs_kern_mount绑定文件系统<ul>
-<li>vfs_kern_mount调用alloc_vfsmnt分配mount数据</li>
-<li>vfs_kern_mount调用mount_fs绑定<ul>
-<li>与前相同，mount_fs调用mount回调函数，这里进入rootfs_mount函数<ul>
-<li>rootfs_mount调用mount_nodev进行绑定<ul>
-<li>mount_nodev调用sget创建新的superbloack</li>
-<li>mount_nodev调用fill_super填充新的sb，这里fill_super是回调函数，进入ramfs_fill_super<ul>
-<li>ramfs_fill_super调用ramfs_get_inode创建新的inode<ul>
-<li>ramfs_get_inode调用new_inode分配一个新的inode</li>
-<li>ramfs_get_inode调用get_next_ino设置一个新的ino<br>由于有DIR标志，ramfs_get_inode设置inode的inode操作为ramfs_dir_inode_operations<br>由于有DIR标志，ramfs_get_inode设置inode的目录操作为simple_dir_operations</li>
-<li>ramfs_fill_super调用d_alloc_root在inode上创建一个dentry（这里目录名为”&#x2F;“）</li>
-<li>ramfs_fill_super设置superblock的根目录为新创建的dentry</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>rootfs_mount返回</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>vfs_kern_mount将返回的dentry保存到mount结构的mnt_root中作为该文件系统的根节点，</li>
-<li>vfs_kern_mount记录mount点的sb为dentry的superblock，记录mount的mount_point为dentry，返回所创建的mount结构</li>
-</ul>
-</li>
-<li>do_kern_mount调用put_filesystem解锁所绑定的文件系统并返回mount点</li>
-</ul>
-</li>
-<li>init_mount_tree调用create_mnt_ns在绑定点上创建一个namespace</li>
-<li>init_mount_tree创建一个路径root，root的绑定点设置为刚创建的mount点，root的dentry设置为刚创建的mount点的根dentry</li>
-<li>init_mount_tree调用set_fs_pwd设置当前目录为路径root（即rootfs的根目录）（信息记录在当前task的fs数据中）</li>
-<li>init_mount_tree调用set_fs_root设置当前根目录为路径root（即rootfs的根目录）（信息记录在当前task的fs数据中）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="阅读ext4的实现"><a href="#阅读ext4的实现" class="headerlink" title="阅读ext4的实现"></a>阅读ext4的实现</h3><h2 id="glibc的ptmalloc"><a href="#glibc的ptmalloc" class="headerlink" title="glibc的ptmalloc"></a>glibc的ptmalloc</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/428216764">参考</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="fallingleaflun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/15/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-15 20:37:39" itemprop="dateCreated datePublished" datetime="2023-05-15T20:37:39+08:00">2023-05-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">fallingleaflun</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-</body>
-</html>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/16/linux_note/" title="linux_note">linux_note</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-16T12:52:15.055Z" title="发表于 2023-05-16 20:52:15">2023-05-16</time></span></div><div class="content">vscode
+in order to provide the compile command to intellisense, we have to execute scripts/clang-tools/gen_compile_command.py(run from the root directory of the kernel source tree!!!), and config the output json in c_cpp_properties.json
+
+qemuuse ctrl+a then x to exit qemu
+linux source in x86
+compile
+make mrproper
+make defconfig
+make menuconfig
+make -j 4
+
+
+kernel file:
+vmlinux: original kernel ELF
+Image: apply objcopy to vmlinux for a binary image
+/arch/x86/bzImage: compressed image
+System.map(a  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/15/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-15T12:37:39.119Z" title="发表于 2023-05-15 20:37:39">2023-05-15</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">fallingleaflun</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/16/linux_note/" title="linux_note">linux_note</a><time datetime="2023-05-16T12:52:15.055Z" title="发表于 2023-05-16 20:52:15">2023-05-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/hello-world/" title="Hello World">Hello World</a><time datetime="2023-05-15T12:37:39.119Z" title="发表于 2023-05-15 20:37:39">2023-05-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-05-16T14:47:04.698Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By fallingleaflun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

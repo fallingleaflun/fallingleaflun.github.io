@@ -169,7 +169,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-05-16 20:52:15 / 修改时间：21:12:36" itemprop="dateCreated datePublished" datetime="2023-05-16T20:52:15+08:00">2023-05-16</time>
+      <time title="创建时间：2023-05-16 20:52:15 / 修改时间：21:24:07" itemprop="dateCreated datePublished" datetime="2023-05-16T20:52:15+08:00">2023-05-16</time>
     </span>
 
   
@@ -182,11 +182,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h1><ul>
+          <h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><ul>
 <li>in order to provide the compile command to intellisense, we have to execute <code>scripts/clang-tools/gen_compile_command.py</code>(run from the root directory of the kernel source tree!!!), and config the output json in c_cpp_properties.json</li>
 </ul>
-<h1 id="qemu"><a href="#qemu" class="headerlink" title="qemu"></a>qemu</h1><p>use ctrl+a then x to exit qemu</p>
-<h1 id="linux-source-in-x86"><a href="#linux-source-in-x86" class="headerlink" title="linux source in x86"></a>linux source in x86</h1><ul>
+<h2 id="qemu"><a href="#qemu" class="headerlink" title="qemu"></a>qemu</h2><p>use ctrl+a then x to exit qemu</p>
+<h2 id="linux-source-in-x86"><a href="#linux-source-in-x86" class="headerlink" title="linux source in x86"></a>linux source in x86</h2><ul>
 <li>compile<ul>
 <li><code>make mrproper</code></li>
 <li><code>make defconfig</code></li>
@@ -203,21 +203,15 @@
 </li>
 <li><code>asmlinkage</code>: tells the compiler we use stack to pass the arguments, because we can pass arguments by register in some archs.</li>
 <li><code>__init</code>: will put the object code to .init.text section, for the purpose of ensemble some code to increase the hit rate of cache.</li>
-<li></li>
 </ul>
-<h2 id="add-a-syscall-in-x86"><a href="#add-a-syscall-in-x86" class="headerlink" title="add a syscall in x86"></a>add a syscall in x86</h2><ol>
+<h3 id="add-a-syscall-in-x86"><a href="#add-a-syscall-in-x86" class="headerlink" title="add a syscall in x86"></a>add a syscall in x86</h3><ol>
 <li>register a syscall number in <code>arch/x86/entry/syscalls/syscall_64.tbl</code></li>
 <li>declare a syscall function in <code>include/linux/syscalls.h</code></li>
 <li>implements a sycall funcion in <code>kernel/sys.c</code></li>
 <li>recompile the kernel</li>
-<li></li>
+<li>use c lib marco <code>unistd.h/_syscalln()</code>(n range from 0-6) to call the syscall or use <code>&lt;sys/syscall.h&gt;/syscall()</code>. The marco will be expanded into a asm embedded c function</li>
 </ol>
-<ul>
-<li>use c lib marco <code>unistd.h/_syscalln()</code>(n range from 0-6) to call the syscall</li>
-<li>or use <code>&lt;sys/syscall.h&gt;/syscall()</code></li>
-<li>the marco will be expanded into a asm embedded c function</li>
-</ul>
-<h2 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h2><ul>
+<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><ul>
 <li>Some commands<ul>
 <li><code>lsmod</code></li>
 <li><code>insmod/rmmod</code>: not recommanded</li>
@@ -231,10 +225,8 @@
 <li>make and get a <code>.ko</code> file</li>
 <li><code>insmod xxx.ko</code> will add the module to kernel</li>
 </ol>
-<ul>
-<li>ps. use <code>dmesg</code> can print the ring buffer</li>
-</ul>
 </li>
+<li>ps. use <code>dmesg</code> can print the ring buffer</li>
 </ul>
 <h2 id="内核入口"><a href="#内核入口" class="headerlink" title="内核入口"></a>内核入口</h2><ul>
 <li>内核通用(架构无关)入口是<code>init/main.c/start_kernel</code>,但进入内核之前还有一部分架构相关的工作需要bootloader做</li>
@@ -478,7 +470,273 @@
 <li>mutex</li>
 <li>RCU:基本思想是这样的：先创建一个旧数据的copy，然后writer更新这个copy，最后再用新的数据替换掉旧的数据。这样就可以在不加锁的情况下进行读操作，从而提高了并发性能。</li>
 </ul>
-<h2 id="时钟管理"><a href="#时钟管理" class="headerlink" title="时钟管理"></a>时钟管理</h2><h2 id="略过-用户内存管理-malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用-利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片-mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放-内核内存管理-需要注意的是这里讲的不是glibc里面的malloc-那个是用户空间的内存管理，这里讲的是内核空间的内存管理-概述-linux用page描述页框，伙伴算法-slab-小块的cache-Zone-其实就是给内存划分区域-MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。-mmzone-h有个enum-zone-type定义了这几种zone-ZONE-DMA-专供DMA用-ZONE-NORMAL-直接映射-ZONE-HIGHMEM-高端内存-需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了-ZONE-MOVABLE-放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔-zone-free-area-这个就是伙伴系统的那个长度为11的链表数组！-内核内存管理API-page相关的API-struct-page-alloc-pages-gfp-t-gfp-unsigned-order-分配一个-2-order-个连续的物理页，返回一个指向第一个page的指针-void-page-address-const-struct-page-page-根据page指针获取页面所映射的虚拟地址-slab相关的API-ps-内核已经预先建立了一些slab-通过cat-proc-slabinfo可以看到已有的slab-struct-kmem-cache-kmem-cache-create-const-char-name-unsigned-int-size-unsigned-int-align-slab-flags-t-flags-void-ctor-void-可以让我们自定义地创建一类slab-void-kmem-cache-destroy-struct-kmem-cache-摧毁创建出的slab-void-kmem-cache-alloc-struct-kmem-cache-cachep-int-flags-从cachep这个slab中分配一个对象-void-kmem-cache-free-struct-kmem-cache-cachep-void-objp-释放掉刚刚分配的对象-内核申请内存的API-static-always-inline-void-kmalloc-size-t-size-gfp-t-flags-返回一个内存块的指针，其大小至少为size-内存是物理连续的-void-vmalloc-unsigned-long-size-与kmalloc不同之处在于所分配的内存在物理上无需连续-伙伴算法-把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块-假设要求分配的块的大小为128个页面-由多个页面组成的块叫页面块-，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配-如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。-page-alloc-c-alloc-pages-最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从rmqueue函数开始看-rmqueue-参考-检查是否需要通过per-cpu方式进行分配，per-cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。-rmqueue函数里面有一个循环-用goto写的-，这个循环里面调用的-rmqueue-smallest就是伙伴算法的逻辑！-slab-以对象的观点管理内存-先利用页面分配器分配出单个或者一组连续的物理页面-称为cache，不是硬件那个cache-，然后在此基础上将整块页面分割成多个相等的小内存单元-称为cache组-，以满足小内存空间分配的需要-每个组里面都放同一种struct-实际内核中还有slob-x2F-slub这另外两种改进机制-slab-def-h-kmem-cache-slab的管理结构，写了一点注释-linux创建和使用一个slab的过程-创建-slab-commom-c-kmem-cache-create-usercopy-先用kstrdup-const函数分配一段cache-name的空间用来存放slab的名字-然后通过create-cache函数创建一个kmem-cache-create-cache-利用kmem-cache-zalloc分配内核空间以存放kmem-cache-填充kmem-cache的基础信息-调用-kmem-cache-create-对齐-freelist的更新操作-初始化cpu私有数据-将新创建的cache添加到slab-caches链表中-使用-kmem-cache-alloc是入口，关键在于-cache-alloc函数-cache-alloc-先通过cpu-cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过cache-alloc-refill获取-cache-alloc-refill-先通过shared中获取，如没有则通过get-first-slab获取，还不够就说明需要申请页了，通过cache-grow-begin-cache-grow-begin-向伙伴系统申请连续页框并放入kmem-cache中，然后申请并初始化freelist，然后将slab切分成一个个object-如果slab设置了构造函数ctor的话还会执行这个构造函数-并与freelist匹配起来-参考-slab着色-由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache-location-x3D-address-cache-size，cache-size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache-location-是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。-Page内部结构-CPU是按照byte或word寻址的，但是MMU-是一个硬件-会以页为单位进行处理，不同体系的页大小不一致-在mm-types-h中定义了struct-page-以下仅说明部分成员的意义-flags-描述page的状态和其他信息，取值为pageflags-定义在linux-page-flags-h中-第一个union-Page-cache-and-anonymous-pages-lru-详见下面的”LRU”条目-page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。-page属于slab时，page-gt-lru-next指向page驻留的的缓存的管理结构，page-gt-lru-prec指向保存该page的slab的管理结构。-page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。-mapping-如果mapping-x3D-0，说明该page属于交换缓存（swap-cache）；当需要使用地址空间时会指定交换分区的地址空间swapper-space。-如果mapping-x3D-0，bit-0-x3D-0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address-space。-如果mapping-x3D-0，bit-0-x3D-0，说明该page为匿名映射，mapping指向struct-anon-vma对象。-index-当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype-见set-pcppage-migratetype-函数）-private-看注释吧，主要是如果是PageBuddy的话这个值就是order值-page-pool-used-by-netstack-dma相关？-slab-slob-and-slub-slab-list-slab链表的头-next-指向下一个page-pages-表示当前该CPU-partial中slab的数目-pobjects-表示当前该CPU-partial中空闲obj数目-slab-cache-指向slab描述符-kmem-cache-freelist：指向当前page对应的slab中的第一个空闲obj-s-mem：指向当前page对应的slab中的第一个obj的起始地址-x2F-SLUB-x2F-都是和slub相关的，跳过了-Tail-pages-of-compound-page-复合页-compound-Page-是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent-huge-page-在复合页中，除了第一个page我们叫head-page，其余page都是tail-page-compound-head：指向复合页的第一个-head页。如果compound-head被设置成head-page，则表明该页是复合页的tail页-下略-Second-tail-page-of-compound-page-还是和复合页相关，略-Page-table-pages-这个结构主要是存储一些跟页表相关的参数。当这个page是用于page-table，这些参数会用到-pt-pad-1：如描述，如果是复合页，这个表示该page对应的head-page是哪一个，如果它就是head-page，则为0-pmd-huge-pte：pmd和pte在64位中分别是二级页目录和一级页表项。pmd-huge-pte参数描述的应该是pmd到pte之间的页表相关信息-pt-pad-2：指向页表对应的page的所映射的地址空间-pt-mm：这个是只用于x86，指向页表的pgd-ptl-这个锁主要用来保护前面pmd-huge-pte，确保使用时，不会前后数据不一致-第二个union-mapcount-被页表映射的次数，也就是说该page同时被多少个进程共享-page-type-看注释-refcount-表示内核中引用该page的次数-当没有被引用的时候值为-1-还有一些和cgroup相关的东西，略-页表-linux对所有体系结构都是用三级页表的-pgd-t数组-顶级页表，内部元素指向pmd-t-pmd-t数组-二级页表，内部元素指向pte-t-pte-t-三级页表，指向物理页面-LRU-linux内核的内存管理中有三个LRU链表-Active-list-存放刚访问过的page-Inactive-list-长时间未访问过的page-内核线程kswapd会周期性地把Active-list中符合条件的页面移到Inactive-list中，这项转移工作是由refill-inactive-zone-完成-Unevictable-list-两类page-file-page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可-anon-page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放-page-out-file-page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out-swap-out-anon-page在内存不足时就只能写到硬盘上的交换区-swap-里，称为swap-out-pcp-冷页表示该空闲页已经不再高速缓存中了-一般是指L2-Cache-，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp-VFS-VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了-参考一篇能比较好梳理文件系统脉络的文章-从应用层的open调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统-说到进程就会想到task-struct，这个结构里面和文件有关的就是struct-files-struct-files这个成员-file-struct重要的是fdtable类型的成员-fdtable-里面有个成员fd指向一个rcu数组，数组装的都是struct-file类型的指针-struct-file-只不过是进程打开文件的上下文信息，并不是文件的本质信息-告诉我们struct-file不是核心数据结构之后又引出了inode和dentry-dentry是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。-为什么设计这个结构？如果没有这个东西，要打开-usr-bin-vi，我们就要-1-去-所在的inode找到数据块，从数据块中读取到usr的inode-2-去-usr所在的inode找到数据块，从数据块中读取到bin的inode-3-去-usr-bin所在的inode找到数据块，从数据块中读取到vi的inode-为了加速这个查找过程，我们可以建立文件名到inode的映射，entry就是在干这件事，其成员d-name存放文件名-d-inode存放对应的inode-此外，为了还要更快，甚至还加上了哈希表-inode-这个就是核心啦-但是这篇文章的博主似乎没什么好聊的，就开始聊address-space-说这个address-space里面的page-tree指向一个基数树，这个又涉及了page-cache-比较重要的struct-super-block-inode-dentry-file-xxx-operations-类似interface，需要具体文件系统实现-file-system-type-vfsmount-fs-struct-file-super-block-成员看fs-h-super-block的注释-super-c-alloc-super负责创建super-block-inode-成员看fs-h-inode的注释-inode-operations-成员看fs-h-inode-operations的注释-dentry-成员看dcache-h-dentry的注释-dentry有三种状态-used-d-inode指向了一个inode且d-count-gt-0-unused-d-inode指向了一个inode但d-count-x3D-0-negative-d-inode指向NULL-如果系统找到这样的就可以快速确认文件不存在了-unused和negative状态的dentry都可以从缓存中被释放-dentry-operations-成员看dcache-h-dentry-operations的注释-file-成员看fs-h-file的注释-不注释了。-file-operations-成员看fs-h-file-operations的注释-内核从4-1开始关于AIO的函数就被read-iter和write-iter取代了-参数中的iov-iter是个迭代器，-暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定-file-system-type-用于描述每种文件系统的功能和行为-成员看fs-h-file-system-type的注释-调用register-filesystem注册文件系统对象-Page-Cache-这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中-三种写缓存的策略-不缓存，直接只把某些页写到磁盘中-写穿，写缓存页同时也写到磁盘中-写回-writeback-，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback"><a href="#略过-用户内存管理-malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用-利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片-mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放-内核内存管理-需要注意的是这里讲的不是glibc里面的malloc-那个是用户空间的内存管理，这里讲的是内核空间的内存管理-概述-linux用page描述页框，伙伴算法-slab-小块的cache-Zone-其实就是给内存划分区域-MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。-mmzone-h有个enum-zone-type定义了这几种zone-ZONE-DMA-专供DMA用-ZONE-NORMAL-直接映射-ZONE-HIGHMEM-高端内存-需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了-ZONE-MOVABLE-放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔-zone-free-area-这个就是伙伴系统的那个长度为11的链表数组！-内核内存管理API-page相关的API-struct-page-alloc-pages-gfp-t-gfp-unsigned-order-分配一个-2-order-个连续的物理页，返回一个指向第一个page的指针-void-page-address-const-struct-page-page-根据page指针获取页面所映射的虚拟地址-slab相关的API-ps-内核已经预先建立了一些slab-通过cat-proc-slabinfo可以看到已有的slab-struct-kmem-cache-kmem-cache-create-const-char-name-unsigned-int-size-unsigned-int-align-slab-flags-t-flags-void-ctor-void-可以让我们自定义地创建一类slab-void-kmem-cache-destroy-struct-kmem-cache-摧毁创建出的slab-void-kmem-cache-alloc-struct-kmem-cache-cachep-int-flags-从cachep这个slab中分配一个对象-void-kmem-cache-free-struct-kmem-cache-cachep-void-objp-释放掉刚刚分配的对象-内核申请内存的API-static-always-inline-void-kmalloc-size-t-size-gfp-t-flags-返回一个内存块的指针，其大小至少为size-内存是物理连续的-void-vmalloc-unsigned-long-size-与kmalloc不同之处在于所分配的内存在物理上无需连续-伙伴算法-把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块-假设要求分配的块的大小为128个页面-由多个页面组成的块叫页面块-，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配-如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。-page-alloc-c-alloc-pages-最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从rmqueue函数开始看-rmqueue-参考-检查是否需要通过per-cpu方式进行分配，per-cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。-rmqueue函数里面有一个循环-用goto写的-，这个循环里面调用的-rmqueue-smallest就是伙伴算法的逻辑！-slab-以对象的观点管理内存-先利用页面分配器分配出单个或者一组连续的物理页面-称为cache，不是硬件那个cache-，然后在此基础上将整块页面分割成多个相等的小内存单元-称为cache组-，以满足小内存空间分配的需要-每个组里面都放同一种struct-实际内核中还有slob-x2F-slub这另外两种改进机制-slab-def-h-kmem-cache-slab的管理结构，写了一点注释-linux创建和使用一个slab的过程-创建-slab-commom-c-kmem-cache-create-usercopy-先用kstrdup-const函数分配一段cache-name的空间用来存放slab的名字-然后通过create-cache函数创建一个kmem-cache-create-cache-利用kmem-cache-zalloc分配内核空间以存放kmem-cache-填充kmem-cache的基础信息-调用-kmem-cache-create-对齐-freelist的更新操作-初始化cpu私有数据-将新创建的cache添加到slab-caches链表中-使用-kmem-cache-alloc是入口，关键在于-cache-alloc函数-cache-alloc-先通过cpu-cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过cache-alloc-refill获取-cache-alloc-refill-先通过shared中获取，如没有则通过get-first-slab获取，还不够就说明需要申请页了，通过cache-grow-begin-cache-grow-begin-向伙伴系统申请连续页框并放入kmem-cache中，然后申请并初始化freelist，然后将slab切分成一个个object-如果slab设置了构造函数ctor的话还会执行这个构造函数-并与freelist匹配起来-参考-slab着色-由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache-location-x3D-address-cache-size，cache-size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache-location-是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。-Page内部结构-CPU是按照byte或word寻址的，但是MMU-是一个硬件-会以页为单位进行处理，不同体系的页大小不一致-在mm-types-h中定义了struct-page-以下仅说明部分成员的意义-flags-描述page的状态和其他信息，取值为pageflags-定义在linux-page-flags-h中-第一个union-Page-cache-and-anonymous-pages-lru-详见下面的”LRU”条目-page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。-page属于slab时，page-gt-lru-next指向page驻留的的缓存的管理结构，page-gt-lru-prec指向保存该page的slab的管理结构。-page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。-mapping-如果mapping-x3D-0，说明该page属于交换缓存（swap-cache）；当需要使用地址空间时会指定交换分区的地址空间swapper-space。-如果mapping-x3D-0，bit-0-x3D-0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address-space。-如果mapping-x3D-0，bit-0-x3D-0，说明该page为匿名映射，mapping指向struct-anon-vma对象。-index-当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype-见set-pcppage-migratetype-函数）-private-看注释吧，主要是如果是PageBuddy的话这个值就是order值-page-pool-used-by-netstack-dma相关？-slab-slob-and-slub-slab-list-slab链表的头-next-指向下一个page-pages-表示当前该CPU-partial中slab的数目-pobjects-表示当前该CPU-partial中空闲obj数目-slab-cache-指向slab描述符-kmem-cache-freelist：指向当前page对应的slab中的第一个空闲obj-s-mem：指向当前page对应的slab中的第一个obj的起始地址-x2F-SLUB-x2F-都是和slub相关的，跳过了-Tail-pages-of-compound-page-复合页-compound-Page-是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent-huge-page-在复合页中，除了第一个page我们叫head-page，其余page都是tail-page-compound-head：指向复合页的第一个-head页。如果compound-head被设置成head-page，则表明该页是复合页的tail页-下略-Second-tail-page-of-compound-page-还是和复合页相关，略-Page-table-pages-这个结构主要是存储一些跟页表相关的参数。当这个page是用于page-table，这些参数会用到-pt-pad-1：如描述，如果是复合页，这个表示该page对应的head-page是哪一个，如果它就是head-page，则为0-pmd-huge-pte：pmd和pte在64位中分别是二级页目录和一级页表项。pmd-huge-pte参数描述的应该是pmd到pte之间的页表相关信息-pt-pad-2：指向页表对应的page的所映射的地址空间-pt-mm：这个是只用于x86，指向页表的pgd-ptl-这个锁主要用来保护前面pmd-huge-pte，确保使用时，不会前后数据不一致-第二个union-mapcount-被页表映射的次数，也就是说该page同时被多少个进程共享-page-type-看注释-refcount-表示内核中引用该page的次数-当没有被引用的时候值为-1-还有一些和cgroup相关的东西，略-页表-linux对所有体系结构都是用三级页表的-pgd-t数组-顶级页表，内部元素指向pmd-t-pmd-t数组-二级页表，内部元素指向pte-t-pte-t-三级页表，指向物理页面-LRU-linux内核的内存管理中有三个LRU链表-Active-list-存放刚访问过的page-Inactive-list-长时间未访问过的page-内核线程kswapd会周期性地把Active-list中符合条件的页面移到Inactive-list中，这项转移工作是由refill-inactive-zone-完成-Unevictable-list-两类page-file-page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可-anon-page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放-page-out-file-page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out-swap-out-anon-page在内存不足时就只能写到硬盘上的交换区-swap-里，称为swap-out-pcp-冷页表示该空闲页已经不再高速缓存中了-一般是指L2-Cache-，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp-VFS-VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了-参考一篇能比较好梳理文件系统脉络的文章-从应用层的open调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统-说到进程就会想到task-struct，这个结构里面和文件有关的就是struct-files-struct-files这个成员-file-struct重要的是fdtable类型的成员-fdtable-里面有个成员fd指向一个rcu数组，数组装的都是struct-file类型的指针-struct-file-只不过是进程打开文件的上下文信息，并不是文件的本质信息-告诉我们struct-file不是核心数据结构之后又引出了inode和dentry-dentry是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。-为什么设计这个结构？如果没有这个东西，要打开-usr-bin-vi，我们就要-1-去-所在的inode找到数据块，从数据块中读取到usr的inode-2-去-usr所在的inode找到数据块，从数据块中读取到bin的inode-3-去-usr-bin所在的inode找到数据块，从数据块中读取到vi的inode-为了加速这个查找过程，我们可以建立文件名到inode的映射，entry就是在干这件事，其成员d-name存放文件名-d-inode存放对应的inode-此外，为了还要更快，甚至还加上了哈希表-inode-这个就是核心啦-但是这篇文章的博主似乎没什么好聊的，就开始聊address-space-说这个address-space里面的page-tree指向一个基数树，这个又涉及了page-cache-比较重要的struct-super-block-inode-dentry-file-xxx-operations-类似interface，需要具体文件系统实现-file-system-type-vfsmount-fs-struct-file-super-block-成员看fs-h-super-block的注释-super-c-alloc-super负责创建super-block-inode-成员看fs-h-inode的注释-inode-operations-成员看fs-h-inode-operations的注释-dentry-成员看dcache-h-dentry的注释-dentry有三种状态-used-d-inode指向了一个inode且d-count-gt-0-unused-d-inode指向了一个inode但d-count-x3D-0-negative-d-inode指向NULL-如果系统找到这样的就可以快速确认文件不存在了-unused和negative状态的dentry都可以从缓存中被释放-dentry-operations-成员看dcache-h-dentry-operations的注释-file-成员看fs-h-file的注释-不注释了。-file-operations-成员看fs-h-file-operations的注释-内核从4-1开始关于AIO的函数就被read-iter和write-iter取代了-参数中的iov-iter是个迭代器，-暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定-file-system-type-用于描述每种文件系统的功能和行为-成员看fs-h-file-system-type的注释-调用register-filesystem注册文件系统对象-Page-Cache-这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中-三种写缓存的策略-不缓存，直接只把某些页写到磁盘中-写穿，写缓存页同时也写到磁盘中-写回-writeback-，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback" class="headerlink" title="略过## 用户内存管理- malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用  - 利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片  - mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放## 内核内存管理- 需要注意的是这里讲的不是glibc里面的malloc,那个是用户空间的内存管理，这里讲的是内核空间的内存管理- 概述: linux用page描述页框，伙伴算法+slab(小块的cache)### Zone- 其实就是给内存划分区域- MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。- mmzone.h有个enum zone_type定义了这几种zone  - ZONE_DMA: 专供DMA用  - ZONE_NORMAL: 直接映射  - ZONE_HIGHMEM:高端内存,需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了  - ZONE_MOVABLE:放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔- zone.free_area:这个就是伙伴系统的那个长度为11的链表数组！### 内核内存管理API- page相关的API  - struct page *alloc_pages(gfp_t gfp, unsigned order)分配一个$2^{order}$个连续的物理页，返回一个指向第一个page的指针  - void *page_address(const struct page *page)根据page指针获取页面所映射的虚拟地址- slab相关的API  - ps. 内核已经预先建立了一些slab,通过cat /proc/slabinfo可以看到已有的slab  - struct kmem_cache * kmem_cache_create(const char *name, unsigned int size, unsigned int align, slab_flags_t flags, void (*ctor)(void *))可以让我们自定义地创建一类slab  - void kmem_cache_destroy(struct kmem_cache *)摧毁创建出的slab  - void *kmem_cache_alloc(struct kmem_cache *cachep, int flags)从cachep这个slab中分配一个对象  - void kmem_cache_free(struct kmem_cache *cachep, void *objp)释放掉刚刚分配的对象  - 内核申请内存的API    - static __always_inline void *kmalloc(size_t size, gfp_t flags)返回一个内存块的指针，其大小至少为size,内存是物理连续的    - void *vmalloc(unsigned long size)与kmalloc不同之处在于所分配的内存在物理上无需连续### 伙伴算法- 把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块- 假设要求分配的块的大小为128个页面(由多个页面组成的块叫页面块)，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配; 如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。- page_alloc.c/alloc_pages:最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从rmqueue函数开始看- rmqueue:  - 参考  - 检查是否需要通过per cpu方式进行分配，per cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。  - __rmqueue函数里面有一个循环(用goto写的)，这个循环里面调用的__rmqueue_smallest就是伙伴算法的逻辑！### slab- 以对象的观点管理内存- 先利用页面分配器分配出单个或者一组连续的物理页面(称为cache，不是硬件那个cache)，然后在此基础上将整块页面分割成多个相等的小内存单元(称为cache组)，以满足小内存空间分配的需要- 每个组里面都放同一种struct- 实际内核中还有slob&#x2F;slub这另外两种改进机制- slab_def.h/kmem_cache: slab的管理结构，写了一点注释- linux创建和使用一个slab的过程  - 创建    - slab_commom.c/kmem_cache_create_usercopy      - 先用kstrdup_const函数分配一段cache_name的空间用来存放slab的名字      - 然后通过create_cache函数创建一个kmem_cache    - create_cache:      - 利用kmem_cache_zalloc分配内核空间以存放kmem_cache      - 填充kmem_cache的基础信息      - 调用__kmem_cache_create        - 对齐        - freelist的更新操作        - 初始化cpu私有数据      - 将新创建的cache添加到slab_caches链表中  - 使用    - kmem_cache_alloc是入口，关键在于____cache_alloc函数    - ____cache_alloc:先通过cpu_cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过cache_alloc_refill获取    - cache_alloc_refill:先通过shared中获取，如没有则通过get_first_slab获取，还不够就说明需要申请页了，通过cache_grow_begin    - cache_grow_begin:向伙伴系统申请连续页框并放入kmem_cache中，然后申请并初始化freelist，然后将slab切分成一个个object(如果slab设置了构造函数ctor的话还会执行这个构造函数)并与freelist匹配起来- 参考- slab着色:  由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache_location &#x3D; address % cache_size，cache_size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache_location 是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。### Page内部结构  - CPU是按照byte或word寻址的，但是MMU(是一个硬件)会以页为单位进行处理，不同体系的页大小不一致  - 在mm_types.h中定义了struct page,以下仅说明部分成员的意义    - flags:　描述page的状态和其他信息，取值为pageflags,定义在linux/page-flags.h中    - 第一个union:      - Page cache and anonymous pages        - lru:          - 详见下面的”LRU”条目          - page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。          - page属于slab时，page-&gt;lru.next指向page驻留的的缓存的管理结构，page-&gt;lru.prec指向保存该page的slab的管理结构。          - page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。        - mapping:            - 如果mapping &#x3D; 0，说明该page属于交换缓存（swap cache）；当需要使用地址空间时会指定交换分区的地址空间swapper_space。            - 如果mapping !&#x3D; 0，bit[0] &#x3D; 0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address_space。            - 如果mapping !&#x3D; 0，bit[0] !&#x3D; 0，说明该page为匿名映射，mapping指向struct anon_vma对象。        - index: 当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype(见set_pcppage_migratetype()函数）        - private:看注释吧，主要是如果是PageBuddy的话这个值就是order值      - page_pool used by netstack: dma相关？      - slab, slob and slub        - slab_list: slab链表的头        - next: 指向下一个page        - pages: 表示当前该CPU partial中slab的数目        - pobjects: 表示当前该CPU partial中空闲obj数目        - slab_cache: 指向slab描述符 kmem_cache        - freelist：指向当前page对应的slab中的第一个空闲obj        - s_mem：指向当前page对应的slab中的第一个obj的起始地址        - &#x2F;SLUB&#x2F;都是和slub相关的，跳过了      - Tail pages of compound page        - 复合页(compound Page)是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent huge page, 在复合页中，除了第一个page我们叫head page，其余page都是tail page        - compound_head：指向复合页的第一个 head页。如果compound_head被设置成head page，则表明该页是复合页的tail页        - 下略      - Second tail page of compound page        - 还是和复合页相关，略      - Page table pages        - 这个结构主要是存储一些跟页表相关的参数。当这个page是用于page table，这些参数会用到        - _pt_pad_1：如描述，如果是复合页，这个表示该page对应的head page是哪一个，如果它就是head page，则为0        - pmd_huge_pte：pmd和pte在64位中分别是二级页目录和一级页表项。pmd_huge_pte参数描述的应该是pmd到pte之间的页表相关信息        - _pt_pad_2：指向页表对应的page的所映射的地址空间        - pt_mm：这个是只用于x86，指向页表的pgd        - ptl: 这个锁主要用来保护前面pmd_huge_pte，确保使用时，不会前后数据不一致      - 第二个union:        - _mapcount: 被页表映射的次数，也就是说该page同时被多少个进程共享        - page_type: 看注释        - _refcount: 表示内核中引用该page的次数,当没有被引用的时候值为-1      - 还有一些和cgroup相关的东西，略### 页表- linux对所有体系结构都是用三级页表的- pgd_t数组:顶级页表，内部元素指向pmd_t- pmd_t数组:二级页表，内部元素指向pte_t- pte_t:三级页表，指向物理页面### LRU- linux内核的内存管理中有三个LRU链表  - Active list: 存放刚访问过的page  - Inactive list: 长时间未访问过的page, 内核线程kswapd会周期性地把Active list中符合条件的页面移到Inactive list中，这项转移工作是由refill_inactive_zone()完成  - Unevictable list- 两类page  - file page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可  - anon page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放- page-out: file page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out- swap-out: anon page在内存不足时就只能写到硬盘上的交换区(swap)里，称为swap-out- pcp: 冷页表示该空闲页已经不再高速缓存中了(一般是指L2 Cache)，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp## VFS- VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了- 参考一篇能比较好梳理文件系统脉络的文章- 从应用层的open调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统- 说到进程就会想到task_struct，这个结构里面和文件有关的就是struct files_struct *files这个成员- file_struct重要的是fdtable类型的成员- fdtable:里面有个成员fd指向一个rcu数组，数组装的都是struct file类型的指针- struct file:只不过是进程打开文件的上下文信息，并不是文件的本质信息- 告诉我们struct file不是核心数据结构之后又引出了inode和dentry- dentry是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。  - 为什么设计这个结构？如果没有这个东西，要打开/usr/bin/vi，我们就要    1. 去/所在的inode找到数据块，从数据块中读取到usr的inode    2. 去/usr所在的inode找到数据块，从数据块中读取到bin的inode    3. 去/usr/bin所在的inode找到数据块，从数据块中读取到vi的inode  - 为了加速这个查找过程，我们可以建立文件名到inode的映射，entry就是在干这件事，其成员d_name存放文件名,d_inode存放对应的inode  - 此外，为了还要更快，甚至还加上了哈希表- inode:这个就是核心啦,但是这篇文章的博主似乎没什么好聊的，就开始聊address_space,说这个address_space里面的page_tree指向一个基数树，这个又涉及了page cache### 比较重要的struct- super_block- inode- dentry- file- xxx_operations:类似interface，需要具体文件系统实现- file_system_type- vfsmount- fs_struct- file### super_block- 成员看fs.h/super_block的注释- super.c/alloc_super负责创建super_block### inode- 成员看fs.h/inode的注释### inode_operations- 成员看fs.h/inode_operations的注释### dentry- 成员看dcache.h/dentry的注释- dentry有三种状态:  - used:d_inode指向了一个inode且d_count&gt;0  - unused:d_inode指向了一个inode但d_count&#x3D;0  - negative:d_inode指向NULL(如果系统找到这样的就可以快速确认文件不存在了)  - unused和negative状态的dentry都可以从缓存中被释放### dentry_operations- 成员看dcache.h/dentry_operations的注释### file- 成员看fs.h/file的注释,不注释了。### file_operations- 成员看fs.h/file_operations的注释- 内核从4.1开始关于AIO的函数就被read_iter和write_iter取代了  - 参数中的iov_iter是个迭代器，  - 暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定### file_system_type- 用于描述每种文件系统的功能和行为- 成员看fs.h/file_system_type的注释- 调用register_filesystem注册文件系统对象## Page Cache- 这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中- 三种写缓存的策略  - 不缓存，直接只把某些页写到磁盘中  - 写穿，写缓存页同时也写到磁盘中  - 写回(writeback)，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback"></a>略过<br>## 用户内存管理<br>- malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用<br>  - 利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片<br>  - mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放<br>## 内核内存管理<br>- 需要注意的是这里讲的不是glibc里面的malloc,那个是用户空间的内存管理，这里讲的是内核空间的内存管理<br>- 概述: linux用page描述页框，伙伴算法+slab(小块的cache)<br>### Zone<br>- 其实就是给内存划分区域<br>- MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。<br>- <code>mmzone.h</code>有个<code>enum zone_type</code>定义了这几种zone<br>  - <code>ZONE_DMA</code>: 专供DMA用<br>  - <code>ZONE_NORMAL</code>: 直接映射<br>  - <code>ZONE_HIGHMEM</code>:高端内存,需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了<br>  - <code>ZONE_MOVABLE</code>:放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔<br>- <code>zone.free_area</code>:这个就是伙伴系统的那个长度为11的链表数组！<br>### 内核内存管理API<br>- page相关的API<br>  - <code>struct page *alloc_pages(gfp_t gfp, unsigned order)</code>分配一个$2^{order}$个连续的物理页，返回一个指向第一个page的指针<br>  - <code>void *page_address(const struct page *page)</code>根据page指针获取页面所映射的虚拟地址<br>- slab相关的API<br>  - ps. 内核已经预先建立了一些slab,通过<code>cat /proc/slabinfo</code>可以看到已有的slab<br>  - <code>struct kmem_cache * kmem_cache_create(const char *name, unsigned int size, unsigned int align, slab_flags_t flags, void (*ctor)(void *))</code>可以让我们自定义地创建一类slab<br>  - <code>void kmem_cache_destroy(struct kmem_cache *)</code>摧毁创建出的slab<br>  - <code>void *kmem_cache_alloc(struct kmem_cache *cachep, int flags)</code>从cachep这个slab中分配一个对象<br>  - <code>void kmem_cache_free(struct kmem_cache *cachep, void *objp)</code>释放掉刚刚分配的对象<br>  - 内核申请内存的API<br>    - <code>static __always_inline void *kmalloc(size_t size, gfp_t flags)</code>返回一个内存块的指针，其大小至少为size,内存是物理连续的<br>    - <code>void *vmalloc(unsigned long size)</code>与<code>kmalloc</code>不同之处在于所分配的内存在物理上无需连续<br>### 伙伴算法<br>- 把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块<br>- 假设要求分配的块的大小为128个页面(由多个页面组成的块叫页面块)，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配; 如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。<br>- <code>page_alloc.c/alloc_pages</code>:最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从<code>rmqueue</code>函数开始看<br>- <code>rmqueue</code>:<br>  - <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/502525143">参考</a><br>  - 检查是否需要通过per cpu方式进行分配，per cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。<br>  - <code>__rmqueue</code>函数里面有一个循环(用goto写的)，这个循环里面调用的<code>__rmqueue_smallest</code>就是伙伴算法的逻辑！<br>### slab<br>- 以对象的观点管理内存<br>- 先利用页面分配器分配出单个或者一组连续的物理页面(称为cache，不是硬件那个cache)，然后在此基础上将整块页面分割成多个相等的小内存单元(称为cache组)，以满足小内存空间分配的需要<br>- 每个组里面都放同一种struct<br>- 实际内核中还有slob&#x2F;slub这另外两种改进机制<br>- <code>slab_def.h/kmem_cache</code>: slab的管理结构，写了一点注释<br>- linux创建和使用一个slab的过程<br>  - 创建<br>    - <code>slab_commom.c/kmem_cache_create_usercopy</code><br>      - 先用<code>kstrdup_const</code>函数分配一段<code>cache_name</code>的空间用来存放slab的名字<br>      - 然后通过<code>create_cache</code>函数创建一个<code>kmem_cache</code><br>    - <code>create_cache</code>:<br>      - 利用<code>kmem_cache_zalloc</code>分配内核空间以存放<code>kmem_cache</code><br>      - 填充<code>kmem_cache</code>的基础信息<br>      - 调用<code>__kmem_cache_create</code><br>        - 对齐<br>        - <code>freelist</code>的更新操作<br>        - 初始化cpu私有数据<br>      - 将新创建的cache添加到<code>slab_caches</code>链表中<br>  - 使用<br>    - <code>kmem_cache_alloc</code>是入口，关键在于<code>____cache_alloc</code>函数<br>    - <code>____cache_alloc</code>:先通过cpu_cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过<code>cache_alloc_refill</code>获取<br>    - <code>cache_alloc_refill</code>:先通过shared中获取，如没有则通过<code>get_first_slab</code>获取，还不够就说明需要申请页了，通过<code>cache_grow_begin</code><br>    - <code>cache_grow_begin</code>:向伙伴系统申请连续页框并放入kmem_cache中，然后申请并初始化<code>freelist</code>，然后将slab切分成一个个object(如果slab设置了构造函数<code>ctor</code>的话还会执行这个构造函数)并与freelist匹配起来<br>- <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/490588193">参考</a><br>- slab着色:<br>  由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache_location &#x3D; address % cache_size，cache_size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache_location 是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。<br>### Page内部结构<br>  - CPU是按照byte或word寻址的，但是MMU(是一个硬件)会以页为单位进行处理，不同体系的页大小不一致<br>  - 在<code>mm_types.h</code>中定义了<code>struct page</code>,以下仅说明部分成员的意义<br>    - <code>flags</code>:　描述page的状态和其他信息，取值为<code>pageflags</code>,定义在<code>linux/page-flags.h</code>中<br>    - <code>第一个union</code>:<br>      - <strong>Page cache and anonymous pages</strong><br>        - <code>lru</code>:<br>          - 详见下面的”LRU”条目<br>          - page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。<br>          - page属于slab时，page-&gt;lru.next指向page驻留的的缓存的管理结构，page-&gt;lru.prec指向保存该page的slab的管理结构。<br>          - page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。<br>        - <code>mapping</code>:<br>            - 如果mapping &#x3D; 0，说明该page属于交换缓存（swap cache）；当需要使用地址空间时会指定交换分区的地址空间swapper_space。<br>            - 如果mapping !&#x3D; 0，bit[0] &#x3D; 0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address_space。<br>            - 如果mapping !&#x3D; 0，bit[0] !&#x3D; 0，说明该page为匿名映射，mapping指向struct anon_vma对象。<br>        - <code>index</code>: 当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype(见set_pcppage_migratetype()函数）<br>        - <code>private</code>:看注释吧，主要是如果是PageBuddy的话这个值就是order值<br>      - <strong>page_pool used by netstack</strong>: dma相关？<br>      - <strong>slab, slob and slub</strong><br>        - <code>slab_list</code>: slab链表的头<br>        - <code>next</code>: 指向下一个page<br>        - <code>pages</code>: 表示当前该CPU partial中slab的数目<br>        - <code>pobjects</code>: 表示当前该CPU partial中空闲obj数目<br>        - <code>slab_cache</code>: 指向slab描述符 kmem_cache<br>        - <code>freelist</code>：指向当前page对应的slab中的第一个空闲obj<br>        - <code>s_mem</code>：指向当前page对应的slab中的第一个obj的起始地址<br>        - &#x2F;<em>SLUB</em>&#x2F;都是和slub相关的，跳过了<br>      - <strong>Tail pages of compound page</strong><br>        - 复合页(compound Page)是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent huge page, 在复合页中，除了第一个page我们叫head page，其余page都是tail page<br>        - <code>compound_head</code>：指向复合页的第一个 head页。如果compound_head被设置成head page，则表明该页是复合页的tail页<br>        - 下略<br>      - <strong>Second tail page of compound page</strong><br>        - 还是和复合页相关，略<br>      - <strong>Page table pages</strong><br>        - 这个结构主要是存储一些跟页表相关的参数。当这个page是用于page table，这些参数会用到<br>        - <code>_pt_pad_1</code>：如描述，如果是复合页，这个表示该page对应的head page是哪一个，如果它就是head page，则为0<br>        - <code>pmd_huge_pte</code>：pmd和pte在64位中分别是二级页目录和一级页表项。pmd_huge_pte参数描述的应该是pmd到pte之间的页表相关信息<br>        - <code>_pt_pad_2</code>：指向页表对应的page的所映射的地址空间<br>        - <code>pt_mm</code>：这个是只用于x86，指向页表的pgd<br>        - <code>ptl</code>: 这个锁主要用来保护前面pmd_huge_pte，确保使用时，不会前后数据不一致<br>      - <code>第二个union</code>:<br>        - <code>_mapcount</code>: 被页表映射的次数，也就是说该page同时被多少个进程共享<br>        - <code>page_type</code>: 看注释<br>        - <code>_refcount</code>: 表示内核中引用该page的次数,当没有被引用的时候值为-1<br>      - 还有一些和cgroup相关的东西，略<br>### 页表<br>- linux对所有体系结构都是用三级页表的<br>- <code>pgd_t</code>数组:顶级页表，内部元素指向<code>pmd_t</code><br>- <code>pmd_t</code>数组:二级页表，内部元素指向<code>pte_t</code><br>- <code>pte_t</code>:三级页表，指向物理页面<br>### LRU<br>- linux内核的内存管理中有三个LRU链表<br>  - Active list: 存放刚访问过的page<br>  - Inactive list: 长时间未访问过的page, 内核线程<code>kswapd</code>会周期性地把Active list中符合条件的页面移到Inactive list中，这项转移工作是由<code>refill_inactive_zone()</code>完成<br>  - Unevictable list<br>- 两类page<br>  - file page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可<br>  - anon page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放<br>- page-out: file page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out<br>- swap-out: anon page在内存不足时就只能写到硬盘上的交换区(swap)里，称为swap-out<br>- <code>pcp</code>: 冷页表示该空闲页已经不再高速缓存中了(一般是指L2 Cache)，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp<br>## VFS<br>- VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了<br>- <a target="_blank" rel="noopener" href="https://blog.csdn.net/jinking01/article/details/105109089">参考一篇能比较好梳理文件系统脉络的文章</a><br>- 从应用层的<code>open</code>调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统<br>- 说到进程就会想到<code>task_struct</code>，这个结构里面和文件有关的就是<code>struct files_struct *files</code>这个成员<br>- <code>file_struct</code>重要的是<code>fdtable</code>类型的成员<br>- <code>fdtable</code>:里面有个成员<code>fd</code>指向一个rcu数组，数组装的都是<code>struct file</code>类型的指针<br>- <code>struct file</code>:只不过是进程打开文件的上下文信息，并不是文件的本质信息<br>- 告诉我们<code>struct file</code>不是核心数据结构之后又引出了<code>inode</code>和<code>dentry</code><br>- <code>dentry</code>是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。<br>  - 为什么设计这个结构？如果没有这个东西，要打开<code>/usr/bin/vi</code>，我们就要<br>    1. 去<code>/</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>usr</code>的inode<br>    2. 去<code>/usr</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>bin</code>的inode<br>    3. 去<code>/usr/bin</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>vi</code>的inode<br>  - 为了加速这个查找过程，我们可以建立文件名到inode的映射，<code>entry</code>就是在干这件事，其成员<code>d_name</code>存放文件名,<code>d_inode</code>存放对应的inode<br>  - 此外，为了还要更快，甚至还加上了哈希表<br>- <code>inode</code>:这个就是核心啦,但是这篇文章的博主似乎没什么好聊的，就开始聊<code>address_space</code>,说这个<code>address_space</code>里面的<code>page_tree</code>指向一个基数树，这个又涉及了page cache<br>### 比较重要的struct<br>- <code>super_block</code><br>- <code>inode</code><br>- <code>dentry</code><br>- <code>file</code><br>- <code>xxx_operations</code>:类似interface，需要具体文件系统实现<br>- <code>file_system_type</code><br>- <code>vfsmount</code><br>- <code>fs_struct</code><br>- <code>file</code><br>### super_block<br>- 成员看<code>fs.h/super_block</code>的注释<br>- <code>super.c/alloc_super</code>负责创建<code>super_block</code><br>### inode<br>- 成员看<code>fs.h/inode</code>的注释<br>### inode_operations<br>- 成员看<code>fs.h/inode_operations</code>的注释<br>### dentry<br>- 成员看<code>dcache.h/dentry</code>的注释<br>- <code>dentry</code>有三种状态:<br>  - used:<code>d_inode</code>指向了一个inode且<code>d_count</code>&gt;0<br>  - unused:<code>d_inode</code>指向了一个inode但<code>d_count</code>&#x3D;0<br>  - negative:<code>d_inode</code>指向NULL(如果系统找到这样的就可以快速确认文件不存在了)<br>  - unused和negative状态的<code>dentry</code>都可以从缓存中被释放<br>### dentry_operations<br>- 成员看<code>dcache.h/dentry_operations</code>的注释<br>### file<br>- 成员看<code>fs.h/file</code>的注释,不注释了。<br>### file_operations<br>- 成员看<code>fs.h/file_operations</code>的注释<br>- 内核从4.1开始关于AIO的函数就被<code>read_iter</code>和<code>write_iter</code>取代了<br>  - 参数中的<code>iov_iter</code>是个迭代器，<br>  - 暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定<br>### file_system_type<br>- 用于描述每种文件系统的功能和行为<br>- 成员看<code>fs.h/file_system_type</code>的注释<br>- 调用<code>register_filesystem</code>注册文件系统对象<br>## Page Cache<br>- 这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中<br>- 三种写缓存的策略<br>  - 不缓存，直接只把某些页写到磁盘中<br>  - 写穿，写缓存页同时也写到磁盘中<br>  - 写回(writeback)，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback</h2><h2 id="各个机制都了解一遍之后再重新回顾一下main-c"><a href="#各个机制都了解一遍之后再重新回顾一下main-c" class="headerlink" title="各个机制都了解一遍之后再重新回顾一下main.c"></a>各个机制都了解一遍之后再重新回顾一下main.c</h2><h3 id="文件系统的启动流程"><a href="#文件系统的启动流程" class="headerlink" title="文件系统的启动流程"></a>文件系统的启动流程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/_xiao/article/details/46829105">参考</a></p>
+<h2 id="时钟管理"><a href="#时钟管理" class="headerlink" title="时钟管理"></a>时钟管理</h2><ul>
+<li>略过</li>
+</ul>
+<h2 id="用户内存管理"><a href="#用户内存管理" class="headerlink" title="用户内存管理"></a>用户内存管理</h2><ul>
+<li>malloc的实现是：如果需求小于128k内存则用brk这个系统调用，大于128k则用mmap和munmap这两个系统调用<ul>
+<li>利用brk系统调用的原理是：这个调用可以使得程序的数据段增加或减少，那么就有个问题，通过brk获得的内存需要等到高地址内存释放之后才能释放，因此会产生内存碎片</li>
+<li>mmap则会在堆和栈直接找一块空闲内存分配，这些内存可以单独释放</li>
+</ul>
+</li>
+</ul>
+<h2 id="内核内存管理"><a href="#内核内存管理" class="headerlink" title="内核内存管理"></a>内核内存管理</h2><ul>
+<li>需要注意的是这里讲的不是glibc里面的malloc,那个是用户空间的内存管理，这里讲的是内核空间的内存管理</li>
+<li>概述: linux用page描述页框，伙伴算法+slab(小块的cache)</li>
+</ul>
+<h3 id="Zone"><a href="#Zone" class="headerlink" title="Zone"></a>Zone</h3><ul>
+<li>其实就是给内存划分区域</li>
+<li>MMU这个硬件以页为单位处理内存，但是因为有的位于特定的物理地址上的页不能用于特定任务，比如说有的硬件只能用某些特定的内存地址进行DMA，又比如说某些体系结构的虚拟寻址范围比实际内存地址范围要小，那么有的内存无法被永久映射。所以内核会把页划分到不同的zone中。</li>
+<li><code>mmzone.h</code>有个<code>enum zone_type</code>定义了这几种zone<ul>
+<li><code>ZONE_DMA</code>: 专供DMA用</li>
+<li><code>ZONE_NORMAL</code>: 直接映射</li>
+<li><code>ZONE_HIGHMEM</code>:高端内存,需要内核map才能访问，但是64位的架构不需要，因为地址空间足够大了</li>
+<li><code>ZONE_MOVABLE</code>:放在里面的页要求是可随时迁移的，那么系统在迁移的时候就能方便地知道哪些内存可迁移，同时还能支持内存热插拔</li>
+</ul>
+</li>
+<li><code>zone.free_area</code>:这个就是伙伴系统的那个长度为11的链表数组！</li>
+</ul>
+<h3 id="内核内存管理API"><a href="#内核内存管理API" class="headerlink" title="内核内存管理API"></a>内核内存管理API</h3><ul>
+<li>page相关的API<ul>
+<li><code>struct page *alloc_pages(gfp_t gfp, unsigned order)</code>分配一个$2^{order}$个连续的物理页，返回一个指向第一个page的指针</li>
+<li><code>void *page_address(const struct page *page)</code>根据page指针获取页面所映射的虚拟地址</li>
+</ul>
+</li>
+<li>slab相关的API<ul>
+<li>ps. 内核已经预先建立了一些slab,通过<code>cat /proc/slabinfo</code>可以看到已有的slab</li>
+<li><code>struct kmem_cache * kmem_cache_create(const char *name, unsigned int size, unsigned int align, slab_flags_t flags, void (*ctor)(void *))</code>可以让我们自定义地创建一类slab</li>
+<li><code>void kmem_cache_destroy(struct kmem_cache *)</code>摧毁创建出的slab</li>
+<li><code>void *kmem_cache_alloc(struct kmem_cache *cachep, int flags)</code>从cachep这个slab中分配一个对象</li>
+<li><code>void kmem_cache_free(struct kmem_cache *cachep, void *objp)</code>释放掉刚刚分配的对象</li>
+<li>内核申请内存的API<ul>
+<li><code>static __always_inline void *kmalloc(size_t size, gfp_t flags)</code>返回一个内存块的指针，其大小至少为size,内存是物理连续的</li>
+<li><code>void *vmalloc(unsigned long size)</code>与<code>kmalloc</code>不同之处在于所分配的内存在物理上无需连续</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="伙伴算法"><a href="#伙伴算法" class="headerlink" title="伙伴算法"></a>伙伴算法</h3><ul>
+<li>把所有的空闲页放到11个链表中，每个链表分别管理大小为1，2，4，8，16，32，64，128，256，512，1024个页的内存块</li>
+<li>假设要求分配的块的大小为128个页面(由多个页面组成的块叫页面块)，该算法先在块大小为128个页面的链表中查找，看是否有这样的一个空闲块。如果有，就直接分配; 如果没有，该算法会查找下一个更大的块，具体地说，就是在块大小256个页面的链表中查找一个空闲块。如果在存在这样的空闲块，内核就把这个256个页面分成2等份，一份分配出去，另一份插入到块大小为128个页面的链表中。</li>
+<li><code>page_alloc.c/alloc_pages</code>:最后都是靠这个函数分配页面的，但是在这个还是看不到具体的伙伴算法的逻辑，建议从<code>rmqueue</code>函数开始看</li>
+<li><code>rmqueue</code>: <ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/502525143">参考</a></li>
+<li>检查是否需要通过per cpu方式进行分配，per cpu是指内核将变量缓存给每一个CPU上，不同的CPU都保留有自己的副本，这样不同的CPU可以并发的访问自己的这部分变量而无需上锁。</li>
+<li><code>__rmqueue</code>函数里面有一个循环(用goto写的)，这个循环里面调用的<code>__rmqueue_smallest</code>就是伙伴算法的逻辑！</li>
+</ul>
+</li>
+</ul>
+<h3 id="slab"><a href="#slab" class="headerlink" title="slab"></a>slab</h3><ul>
+<li>以对象的观点管理内存</li>
+<li>先利用页面分配器分配出单个或者一组连续的物理页面(称为cache，不是硬件那个cache)，然后在此基础上将整块页面分割成多个相等的小内存单元(称为cache组)，以满足小内存空间分配的需要</li>
+<li>每个组里面都放同一种struct</li>
+<li>实际内核中还有slob&#x2F;slub这另外两种改进机制</li>
+<li><code>slab_def.h/kmem_cache</code>: slab的管理结构，写了一点注释</li>
+<li>linux创建和使用一个slab的过程<ul>
+<li>创建<ul>
+<li><code>slab_commom.c/kmem_cache_create_usercopy</code><ul>
+<li>先用<code>kstrdup_const</code>函数分配一段<code>cache_name</code>的空间用来存放slab的名字</li>
+<li>然后通过<code>create_cache</code>函数创建一个<code>kmem_cache</code></li>
+</ul>
+</li>
+<li><code>create_cache</code>:<ul>
+<li>利用<code>kmem_cache_zalloc</code>分配内核空间以存放<code>kmem_cache</code></li>
+<li>填充<code>kmem_cache</code>的基础信息</li>
+<li>调用<code>__kmem_cache_create</code><ul>
+<li>对齐</li>
+<li><code>freelist</code>的更新操作</li>
+<li>初始化cpu私有数据</li>
+</ul>
+</li>
+<li>将新创建的cache添加到<code>slab_caches</code>链表中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用<ul>
+<li><code>kmem_cache_alloc</code>是入口，关键在于<code>____cache_alloc</code>函数</li>
+<li><code>____cache_alloc</code>:先通过cpu_cache来进行获取object，这种方式不需要上锁且object大概率还在cache中。如没有则继续通过<code>cache_alloc_refill</code>获取</li>
+<li><code>cache_alloc_refill</code>:先通过shared中获取，如没有则通过<code>get_first_slab</code>获取，还不够就说明需要申请页了，通过<code>cache_grow_begin</code></li>
+<li><code>cache_grow_begin</code>:向伙伴系统申请连续页框并放入kmem_cache中，然后申请并初始化<code>freelist</code>，然后将slab切分成一个个object(如果slab设置了构造函数<code>ctor</code>的话还会执行这个构造函数)并与freelist匹配起来</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/490588193">参考</a></li>
+<li>slab着色:<br>由于CPU的cache总是有限的，无法将内存一一对应地缓存下来，所以不同的内存地址就有可能被缓存到同一个cache地址。一个内存地址常常落在cache中的位置是：cache_location &#x3D; address % cache_size，cache_size是缓存的总大小。当两个slab的object的起始offset一样，就有可能出现彼此的cache_location 是一样的，也就是说两个object对应同一个缓存地址。如果交替访问者两个slab的object，有可能出现object在cache上被交替换入换出，这样会影响到cache的命中率。基于此，slab引入了着色的概念，就是将slab剩余的空间“塞”在开头和结尾，这样就会错开两个object的偏移，避免出现交替换入换出的情况。</li>
+</ul>
+<h3 id="Page内部结构"><a href="#Page内部结构" class="headerlink" title="Page内部结构"></a>Page内部结构</h3><ul>
+<li>CPU是按照byte或word寻址的，但是MMU(是一个硬件)会以页为单位进行处理，不同体系的页大小不一致</li>
+<li>在<code>mm_types.h</code>中定义了<code>struct page</code>,以下仅说明部分成员的意义<ul>
+<li><code>flags</code>:　描述page的状态和其他信息，取值为<code>pageflags</code>,定义在<code>linux/page-flags.h</code>中</li>
+<li><code>第一个union</code>:<ul>
+<li><strong>Page cache and anonymous pages</strong><ul>
+<li><code>lru</code>:<ul>
+<li>详见下面的”LRU”条目</li>
+<li>page处于伙伴系统中时，用于链接相同阶的伙伴（只使用伙伴中的第一个page的lru即可达到目的）。</li>
+<li>page属于slab时，page-&gt;lru.next指向page驻留的的缓存的管理结构，page-&gt;lru.prec指向保存该page的slab的管理结构。</li>
+<li>page被用户态使用或被当做页缓存使用时，用于将该page连入zone中相应的lru链表，供内存回收时使用。</li>
+</ul>
+</li>
+<li><code>mapping</code>:<ul>
+<li>如果mapping &#x3D; 0，说明该page属于交换缓存（swap cache）；当需要使用地址空间时会指定交换分区的地址空间swapper_space。</li>
+<li>如果mapping !&#x3D; 0，bit[0] &#x3D; 0，说明该page属于页缓存或文件映射，mapping指向文件的地址空间address_space。</li>
+<li>如果mapping !&#x3D; 0，bit[0] !&#x3D; 0，说明该page为匿名映射，mapping指向struct anon_vma对象。</li>
+</ul>
+</li>
+<li><code>index</code>: 当为文件页被映射时，代表偏移量。为匿名页被映射时，保存的是页迁移类型migratetype(见set_pcppage_migratetype()函数）</li>
+<li><code>private</code>:看注释吧，主要是如果是PageBuddy的话这个值就是order值</li>
+</ul>
+</li>
+<li><strong>page_pool used by netstack</strong>: dma相关？</li>
+<li><strong>slab, slob and slub</strong><ul>
+<li><code>slab_list</code>: slab链表的头</li>
+<li><code>next</code>: 指向下一个page</li>
+<li><code>pages</code>: 表示当前该CPU partial中slab的数目</li>
+<li><code>pobjects</code>: 表示当前该CPU partial中空闲obj数目</li>
+<li><code>slab_cache</code>: 指向slab描述符 kmem_cache</li>
+<li><code>freelist</code>：指向当前page对应的slab中的第一个空闲obj</li>
+<li><code>s_mem</code>：指向当前page对应的slab中的第一个obj的起始地址</li>
+<li>&#x2F;<em>SLUB</em>&#x2F;都是和slub相关的，跳过了</li>
+</ul>
+</li>
+<li><strong>Tail pages of compound page</strong><ul>
+<li>复合页(compound Page)是将物理上连续的两个或多个页看成一个独立的大页，这个复合页可以用来构建hugepage或者transparent huge page, 在复合页中，除了第一个page我们叫head page，其余page都是tail page</li>
+<li><code>compound_head</code>：指向复合页的第一个 head页。如果compound_head被设置成head page，则表明该页是复合页的tail页</li>
+<li>下略</li>
+</ul>
+</li>
+<li><strong>Second tail page of compound page</strong><ul>
+<li>还是和复合页相关，略</li>
+</ul>
+</li>
+<li><strong>Page table pages</strong><ul>
+<li>这个结构主要是存储一些跟页表相关的参数。当这个page是用于page table，这些参数会用到</li>
+<li><code>_pt_pad_1</code>：如描述，如果是复合页，这个表示该page对应的head page是哪一个，如果它就是head page，则为0</li>
+<li><code>pmd_huge_pte</code>：pmd和pte在64位中分别是二级页目录和一级页表项。pmd_huge_pte参数描述的应该是pmd到pte之间的页表相关信息</li>
+<li><code>_pt_pad_2</code>：指向页表对应的page的所映射的地址空间</li>
+<li><code>pt_mm</code>：这个是只用于x86，指向页表的pgd</li>
+<li><code>ptl</code>: 这个锁主要用来保护前面pmd_huge_pte，确保使用时，不会前后数据不一致</li>
+</ul>
+</li>
+<li><code>第二个union</code>:<ul>
+<li><code>_mapcount</code>: 被页表映射的次数，也就是说该page同时被多少个进程共享</li>
+<li><code>page_type</code>: 看注释</li>
+<li><code>_refcount</code>: 表示内核中引用该page的次数,当没有被引用的时候值为-1</li>
+</ul>
+</li>
+<li>还有一些和cgroup相关的东西，略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><ul>
+<li>linux对所有体系结构都是用三级页表的</li>
+<li><code>pgd_t</code>数组:顶级页表，内部元素指向<code>pmd_t</code></li>
+<li><code>pmd_t</code>数组:二级页表，内部元素指向<code>pte_t</code></li>
+<li><code>pte_t</code>:三级页表，指向物理页面</li>
+</ul>
+<h3 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h3><ul>
+<li>linux内核的内存管理中有三个LRU链表<ul>
+<li>Active list: 存放刚访问过的page</li>
+<li>Inactive list: 长时间未访问过的page, 内核线程<code>kswapd</code>会周期性地把Active list中符合条件的页面移到Inactive list中，这项转移工作是由<code>refill_inactive_zone()</code>完成</li>
+<li>Unevictable list</li>
+</ul>
+</li>
+<li>两类page<ul>
+<li>file page是进程的代码、映射的文件对应的page，而这些代码，映射的文件直接就保存在磁盘，被加载到内存，所以可回收后，需要的话直接从磁盘重新读取即可</li>
+<li>anon page是应用程序动态分配的heap，stack对应的page，由于可能再次被访问，当然就不能直接回收，直接释放</li>
+</ul>
+</li>
+<li>page-out: file page在内存不足的时候可以直接写回对应的硬盘文件，称为page-out</li>
+<li>swap-out: anon page在内存不足时就只能写到硬盘上的交换区(swap)里，称为swap-out</li>
+<li><code>pcp</code>: 冷页表示该空闲页已经不再高速缓存中了(一般是指L2 Cache)，热页表示该空闲页仍然在高速缓存中。冷热页是针对于每CPU的，每个zone中，都会针对于所有的CPU初始化一个冷热页的per-cpu-pageset，即pcp</li>
+</ul>
+<h2 id="VFS"><a href="#VFS" class="headerlink" title="VFS"></a>VFS</h2><ul>
+<li>VFS体现了用C实现面向对象的思想，但是我看的内核版本已经和LKD不一样了</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jinking01/article/details/105109089">参考一篇能比较好梳理文件系统脉络的文章</a></li>
+<li>从应用层的<code>open</code>调用开始，这个调用返回一个文件描述符，此时我们是处于一个进程的环境下的，所以从进程切入文件系统</li>
+<li>说到进程就会想到<code>task_struct</code>，这个结构里面和文件有关的就是<code>struct files_struct *files</code>这个成员</li>
+<li><code>file_struct</code>重要的是<code>fdtable</code>类型的成员</li>
+<li><code>fdtable</code>:里面有个成员<code>fd</code>指向一个rcu数组，数组装的都是<code>struct file</code>类型的指针</li>
+<li><code>struct file</code>:只不过是进程打开文件的上下文信息，并不是文件的本质信息</li>
+<li>告诉我们<code>struct file</code>不是核心数据结构之后又引出了<code>inode</code>和<code>dentry</code></li>
+<li><code>dentry</code>是目录项缓存，是一个存放在内存里的缩略版的磁盘文件系统目录树结构。<ul>
+<li>为什么设计这个结构？如果没有这个东西，要打开<code>/usr/bin/vi</code>，我们就要<ol>
+<li>去<code>/</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>usr</code>的inode</li>
+<li>去<code>/usr</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>bin</code>的inode</li>
+<li>去<code>/usr/bin</code>所在的<code>inode</code>找到数据块，从数据块中读取到<code>vi</code>的inode</li>
+</ol>
+</li>
+<li>为了加速这个查找过程，我们可以建立文件名到inode的映射，<code>entry</code>就是在干这件事，其成员<code>d_name</code>存放文件名,<code>d_inode</code>存放对应的inode</li>
+<li>此外，为了还要更快，甚至还加上了哈希表</li>
+</ul>
+</li>
+<li><code>inode</code>:这个就是核心啦,但是这篇文章的博主似乎没什么好聊的，就开始聊<code>address_space</code>,说这个<code>address_space</code>里面的<code>page_tree</code>指向一个基数树，这个又涉及了page cache</li>
+</ul>
+<h3 id="比较重要的struct"><a href="#比较重要的struct" class="headerlink" title="比较重要的struct"></a>比较重要的struct</h3><ul>
+<li><code>super_block</code></li>
+<li><code>inode</code></li>
+<li><code>dentry</code></li>
+<li><code>file</code></li>
+<li><code>xxx_operations</code>:类似interface，需要具体文件系统实现</li>
+<li><code>file_system_type</code></li>
+<li><code>vfsmount</code></li>
+<li><code>fs_struct</code></li>
+<li><code>file</code></li>
+</ul>
+<h3 id="super-block"><a href="#super-block" class="headerlink" title="super_block"></a>super_block</h3><ul>
+<li>成员看<code>fs.h/super_block</code>的注释</li>
+<li><code>super.c/alloc_super</code>负责创建<code>super_block</code></li>
+</ul>
+<h3 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h3><ul>
+<li>成员看<code>fs.h/inode</code>的注释</li>
+</ul>
+<h3 id="inode-operations"><a href="#inode-operations" class="headerlink" title="inode_operations"></a>inode_operations</h3><ul>
+<li>成员看<code>fs.h/inode_operations</code>的注释</li>
+</ul>
+<h3 id="dentry"><a href="#dentry" class="headerlink" title="dentry"></a>dentry</h3><ul>
+<li>成员看<code>dcache.h/dentry</code>的注释</li>
+<li><code>dentry</code>有三种状态:<ul>
+<li>used:<code>d_inode</code>指向了一个inode且<code>d_count</code>&gt;0</li>
+<li>unused:<code>d_inode</code>指向了一个inode但<code>d_count</code>&#x3D;0</li>
+<li>negative:<code>d_inode</code>指向NULL(如果系统找到这样的就可以快速确认文件不存在了)</li>
+<li>unused和negative状态的<code>dentry</code>都可以从缓存中被释放</li>
+</ul>
+</li>
+</ul>
+<h3 id="dentry-operations"><a href="#dentry-operations" class="headerlink" title="dentry_operations"></a>dentry_operations</h3><ul>
+<li>成员看<code>dcache.h/dentry_operations</code>的注释</li>
+</ul>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><ul>
+<li>成员看<code>fs.h/file</code>的注释,不注释了。</li>
+</ul>
+<h3 id="file-operations"><a href="#file-operations" class="headerlink" title="file_operations"></a>file_operations</h3><ul>
+<li>成员看<code>fs.h/file_operations</code>的注释</li>
+<li>内核从4.1开始关于AIO的函数就被<code>read_iter</code>和<code>write_iter</code>取代了<ul>
+<li>参数中的<code>iov_iter</code>是个迭代器，</li>
+<li>暂时还不知道具体实现，因为我们阅读的是VFS的接口，实际实现需要看具体文件系统而定</li>
+</ul>
+</li>
+</ul>
+<h3 id="file-system-type"><a href="#file-system-type" class="headerlink" title="file_system_type"></a>file_system_type</h3><ul>
+<li>用于描述每种文件系统的功能和行为</li>
+<li>成员看<code>fs.h/file_system_type</code>的注释</li>
+<li>调用<code>register_filesystem</code>注册文件系统对象</li>
+</ul>
+<h2 id="Page-Cache"><a href="#Page-Cache" class="headerlink" title="Page Cache"></a>Page Cache</h2><ul>
+<li>这个是磁盘缓存！不要被名字迷惑了，这里指的是磁盘中的文件可以被全部或部分缓存到页中</li>
+<li>三种写缓存的策略<ul>
+<li>不缓存，直接只把某些页写到磁盘中</li>
+<li>写穿，写缓存页同时也写到磁盘中</li>
+<li>写回(writeback)，标记脏页，由一个进程周期性写到磁盘中，linux采用writeback</li>
+</ul>
+</li>
+<li>TODO</li>
+</ul>
+<h2 id="各个机制都了解一遍之后再重新回顾一下main-c"><a href="#各个机制都了解一遍之后再重新回顾一下main-c" class="headerlink" title="各个机制都了解一遍之后再重新回顾一下main.c"></a>各个机制都了解一遍之后再重新回顾一下main.c</h2><h3 id="文件系统的启动流程"><a href="#文件系统的启动流程" class="headerlink" title="文件系统的启动流程"></a>文件系统的启动流程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/_xiao/article/details/46829105">参考</a></p>
 <ul>
 <li>start_kernel做内存初始化，操作系统数据结构初始化，调度系统初始化，各种资源初始化之后会调用vfs_caches_init初始化文件系统</li>
 <li><code>vfs_cache_init</code><ul>

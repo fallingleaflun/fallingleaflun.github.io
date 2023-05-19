@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="fallingleaflun"><meta name="copyright" content="fallingleaflun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="EndpointsI have already installed the restfultoolkit plugin, Use Ctrl+Alt+&#x2F; to search for the endpoint service discovery use spring cloud: nacos components: provider app consumer app name server: use">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/05/19/note/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="EndpointsI have already installed the restfultoolkit plugin, Use Ctrl+Alt+&#x2F; to search for the endpoint service discovery use spring cloud: nacos components: provider app consumer app name server: use">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-05-19T02:30:59.383Z">
+<meta property="article:modified_time" content="2023-05-19T02:30:59.383Z">
+<meta property="article:author" content="fallingleaflun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/05/19/note/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-19 10:30:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-19T02:30:59.383Z" title="发表于 2023-05-19 10:30:59">2023-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-19T02:30:59.383Z" title="更新于 2023-05-19 10:30:59">2023-05-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints"></a>Endpoints</h2><p>I have already installed the restfultoolkit plugin, Use <code>Ctrl+Alt+/</code> to search for the endpoint</p>
+<h2 id="service-discovery"><a href="#service-discovery" class="headerlink" title="service discovery"></a>service discovery</h2><ul>
+<li>use spring cloud: nacos<ul>
+<li>components:<ul>
+<li>provider app</li>
+<li>consumer app</li>
+<li>name server: use VIP(Virtual IP) or DNS for route</li>
+<li>nacos server</li>
+<li>nacos console</li>
+</ul>
+</li>
+<li>procedure<ol>
+<li><code>provider app</code> call <code>nacos server</code>‘s OpenAPI and register endpoint</li>
+<li><code>nacos server</code> use heartbeat to detect the <code>provider app</code> status</li>
+<li><code>consumer app</code> query for the instance list and pull instance list every 10s</li>
+<li><code>nacos server</code> detect <code>provider app</code> abnormal and push update to <code>consumer app</code> by UDP</li>
+<li><code>comsumer app</code> use Dubbo protocol to communicate with <code>provider app</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="start-from-ui-dashboard"><a href="#start-from-ui-dashboard" class="headerlink" title="start from ui-dashboard"></a>start from ui-dashboard</h2><ul>
+<li>dockerfile will copy all the static resources in <code>static</code> into <code>/usr/share/nginx/html</code></li>
+<li>ui is written in html+js+css &#x2F; it is vue!</li>
+<li>vue will use ajax to request <code>/api/v1/users/login</code>, which is provided by <code>ts-auth-service</code></li>
+</ul>
+<h2 id="ts-auth-service"><a href="#ts-auth-service" class="headerlink" title="ts-auth-service"></a>ts-auth-service</h2><h2 id="Super-Class-or-Interface"><a href="#Super-Class-or-Interface" class="headerlink" title="Super Class or Interface"></a>Super Class or Interface</h2><ul>
+<li><code>UserDetails</code>: a class from SpringSecurity, which is used for user authentication and authorization</li>
+<li><code>CrudRepository</code>: an interface provided by Spring Data JPA. You have to override the crud method names.</li>
+</ul>
+<h2 id="Annotations"><a href="#Annotations" class="headerlink" title="Annotations"></a>Annotations</h2><ul>
+<li><code>@EnableDiscoveryClient</code></li>
+<li><code>@LoadBalanced</code>will make RestTemplate instance configured for client-side load balancing<ul>
+<li>This annotation tells Spring to add an interceptor to the RestTemplate instance that will distribute requests across multiple instances of a service</li>
+</ul>
+</li>
+<li><code>@RequestBody BasicAuthDto dao</code> indicate that the request body should be deserialized into a BasicAuthDto object</li>
+<li><code>@Builder</code> is a lombok annotation which help us to build a bean<ul>
+<li>usage:<code>User user = User.builder().userId(dto.getUserId()).username(dto.getUserName()).build()</code></li>
+</ul>
+</li>
+<li><code>@Data</code>: a lombok annotation which makes a bean a data class</li>
+<li><code>@GenericGenerator</code>: A Hibernate annotation that specifies the generator to use for primary key generation. In this case, it’s the UUIDGenerator provided by Hibernate</li>
+<li><code>@Entity</code>: A JPA annotation that marks the class as a JPA(Java Persistence API) entity, allowing it to be persisted to a relational database.</li>
+<li><code>@Table</code>: A JPA annotation that specifies the table name for the entity.</li>
+<li><code>@Id</code>: A JPA annotation that specifies the primary key field for the entity.</li>
+<li><code>@Column</code>: A JPA annotation that specifies the column name and properties for the annotated field.</li>
+<li><code>@ElementCollection</code>: A JPA annotation that specifies that the annotated field is a collection of simple values (i.e. not entities).</li>
+<li><code>@CollectionTable</code>: A JPA annotation that specifies the name of the table that stores the collection of simple values.</li>
+<li><code>@PathVariable</code>: URL query variable</li>
+<li><code>@</code></li>
+</ul>
+<h2 id="Opentelemetry"><a href="#Opentelemetry" class="headerlink" title="Opentelemetry"></a>Opentelemetry</h2><ul>
+<li>Javaagent is suggested but we didn’t adopt.</li>
+<li><a target="_blank" rel="noopener" href="https://opentelemetry.io/docs/instrumentation/java/manual/">Manual</a></li>
+<li>Use <code>openTelemetry.getTracer(&quot;instrumentation-library-name&quot;, &quot;1.0.0&quot;)</code> to get a tracer</li>
+<li>Use <code>tracer.spanBuilder(&quot;my span&quot;).startSpan()</code> to start a span.</li>
+<li>Use <code>Span.end()</code> to end a span.</li>
+<li>Use <code>Span.setParent(Context.current().with(parentSpan))</code> to set the parent of a span.<ul>
+<li>You can also omit the above step. Otl will automatically set the parent.</li>
+</ul>
+</li>
+<li>Each <code>Context</code> has its <code>current Span</code>.<ul>
+<li>Use <code>Span.makeCurrent()</code> to make the span the current span.</li>
+<li>Use <code>Span.current()</code> to get the current span.</li>
+<li>Use <code>Span.fromContext(context)</code> to get the current span of context.</li>
+</ul>
+</li>
+<li><code>Span</code> can have attributes which are KV pairs. <ul>
+<li>Use <code>Span.setAttribute(&quot;key&quot;, &quot;value&quot;)</code> to add an attribute.</li>
+</ul>
+</li>
+<li>Trace Semantic Convention: convert attribute from well-known protocol to span attribute.<ul>
+<li>Use <code>Span.setAttribute(SemanticAttributes.HTTP_METHOD, &quot;GET&quot;)</code> to add a http attribute.</li>
+</ul>
+</li>
+<li>Span Event: structured log message on a Span. <ul>
+<li>Use <code>Span.addEvent(&quot;Init&quot;)</code> to add an event.</li>
+</ul>
+</li>
+<li>Span Link: associate the spans. <ul>
+<li>Use <code>Span.addLink(parentSpan1.getSpanContext())</code> to add a link.</li>
+</ul>
+</li>
+<li>Span Status: <code>Unset</code>,<code>Ok</code>,<code>Error</code><ul>
+<li>Use <code>Span.setStatus(StatusCode.ERROR, &quot;Opps&quot;)</code> to set status.</li>
+<li>Use <code>Span.recordException(throwable)</code> to record an exception.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://opentelemetry.io/docs/reference/specification/trace/api/#spankind">Span Kind</a>: <ul>
+<li><code>Client</code>,<code>Server</code>,<code>Internal</code>,<code>Producer</code>,<code>Consumer</code><ul>
+<li><code>Client</code>&amp;<code>Server</code> are synchoronous</li>
+<li><code>Internal</code> do not cross a process boundary</li>
+<li><code>Producer</code>&amp;<code>Consumer</code> are asynchronous</li>
+</ul>
+</li>
+<li>Use <code>Span.setSpandKind(SpandKind.CLIENT)</code> to set a span kind.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://opentelemetry.io/docs/instrumentation/java/manual/#context-propagation">ContextPropagation</a><ul>
+<li>provides a text-based approach to propagate context to remote services using the W3C Trace Context HTTP headers.</li>
+</ul>
+<ol>
+<li>Implement a <code>TextMapSetter&lt;HttpURLConnection&gt;</code> interface as <code>setter</code></li>
+<li>Use <code>openTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), transportLayer, setter)</code></li>
+<li>Implement a <code>TextMapGetter&lt;HttpURLConnection&gt;</code> interface as <code>getter</code></li>
+<li>Use <code>Context extractedContext = openTelemetry.getPropagators().getTextMapPropagator().extract(Context.current(), httpExchange, getter)</code></li>
+<li>Use <code>extractedContext.makeCurrent()</code> as parent context.</li>
+</ol>
+</li>
+</ul>
+<h3 id="Fpllowing-API-are-provided-by-opentelemetry-sdk"><a href="#Fpllowing-API-are-provided-by-opentelemetry-sdk" class="headerlink" title="Fpllowing API are provided by opentelemetry-sdk"></a>Fpllowing API are provided by opentelemetry-sdk</h3><ul>
+<li>Sampler<ul>
+<li>There are four samplers:<ul>
+<li><code>AlwaysOnSampler</code> which samples every trace regardless of upstream sampling decisions.</li>
+<li><code>AlwaysOffSampler</code> which doesn’t sample any trace, regardless of upstream sampling decisions.</li>
+<li><code>ParentBased</code> which uses the parent span to make sampling decisions, if present.</li>
+<li><code>TraceIdRatioBased</code> which samples a configurable percentage of traces, and additionally samples any trace that was sampled upstream.</li>
+</ul>
+</li>
+<li>Use <code>SdkTracerProvider.setSampler(Sampler.TraceIdRatioBased(0.5))</code> to set sample rate</li>
+</ul>
+</li>
+<li>Span Processor<ul>
+<li>There are three processors:<ul>
+<li><code>SimpleSpanProcessor</code> immediately forwards ended spans to the exporter</li>
+<li><code>BatchSpanProcessor</code> batches them and sends them in bulk</li>
+<li><code>MultiSpanProcessor</code> is multiprocess</li>
+</ul>
+</li>
+<li>Use <code>SdkTracerProvicer.addSpanProcessor(BatchSpanProcessor.builer(grpcSpanExporter))</code></li>
+</ul>
+</li>
+<li>Exporter<ul>
+<li>There are five exporter:<ul>
+<li><code>InMemorySpanExporter</code>: keeps the data in memory, useful for testing and debugging</li>
+<li><code>Jaeger Exporter</code>: prepares and sends the collected telemetry data to a Jaeger backend via gRPC. Varieties include <code>JaegerGrpcSpanExporter</code> and <code>JaegerThriftSpanExporter</code>.</li>
+<li><code>ZipkinSpanExporter</code>: prepares and sends the collected telemetry data to a Zipkin backend via the Zipkin APIs.</li>
+<li><code>OpenTelemetry Protocol Exporter</code>: sends the data in OTLP to the OpenTelemetry Collector or other OTLP receivers. Varieties include <code>OtlpGrpcSpanExporter</code> and <code>OtlpHttpSpanExporter</code>.</li>
+</ul>
+</li>
+<li>Use &#96;&#96;</li>
+</ul>
+</li>
+</ul>
+<h2 id="GRPC"><a href="#GRPC" class="headerlink" title="GRPC"></a>GRPC</h2><ul>
+<li>procedure<ol>
+<li>write a <code>xxx.proto</code> file in the same level as <code>scr/main/java</code></li>
+<li>generate <code>xxxProto.java</code>, <code>xxxReply.java</code>, <code>xxxRequest.java</code> etc.</li>
+<li>generate <code>xxxGrpc.java</code></li>
+<li>write a <code>xxxImpl.java</code> which extends <code>xxxGrpc.xxxImplBase</code> and override the callback</li>
+<li>Use <code>ServerBuilder.forport().addService(new xxxImpl()).build().start()</code> to obtain a rpc server</li>
+<li>Use <code>ManagedChannelBuilder.forAddress(host, port).build()</code> to get a rpc client</li>
+<li>Use <code>xxxGrpc.newBlockingStub(channel)</code> to get a stub</li>
+<li>Use <code>xxxRequest.newBuilder().build()</code> to build a rpc request</li>
+<li>Use <code>stub.someMethod()</code> to execute a rpc call</li>
+<li>Use <code>channel.shutdown</code> to shut down from client</li>
+<li>Use <code>server.shutdown</code> to shut down from server</li>
+</ol>
+</li>
+<li>others <ul>
+<li>There are 4 kinds of RPC<ul>
+<li>Unary: client–1–&gt;server–1–&gt;client</li>
+<li>Server streaming: server holds a stream and write many responses</li>
+<li>Client streaming: client holds a stream and write many request</li>
+<li>Bidirectional streaming: both hold a stream and write many messages</li>
+</ul>
+</li>
+<li>There will be some methods correspond with rpc to be override in <code>xxxImpl.java</code>.<br>These methods contain a parameter named <code>StreamObserver&lt;[Message class]&gt;</code>.<br>This observer is passed from grpc framework, and we will use its callbacks for sending data.<br>callbacks: <code>onNext()</code>, <code>onError()</code>, <code>onComplete()</code>.</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">fallingleaflun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/19/note/">http://example.com/2023/05/19/note/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/17/java_8gu/" title="无聊的八股"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">无聊的八股</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">fallingleaflun</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Endpoints"><span class="toc-number">1.</span> <span class="toc-text">Endpoints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service-discovery"><span class="toc-number">2.</span> <span class="toc-text">service discovery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#start-from-ui-dashboard"><span class="toc-number">3.</span> <span class="toc-text">start from ui-dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ts-auth-service"><span class="toc-number">4.</span> <span class="toc-text">ts-auth-service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Super-Class-or-Interface"><span class="toc-number">5.</span> <span class="toc-text">Super Class or Interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Annotations"><span class="toc-number">6.</span> <span class="toc-text">Annotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Opentelemetry"><span class="toc-number">7.</span> <span class="toc-text">Opentelemetry</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fpllowing-API-are-provided-by-opentelemetry-sdk"><span class="toc-number">7.1.</span> <span class="toc-text">Fpllowing API are provided by opentelemetry-sdk</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GRPC"><span class="toc-number">8.</span> <span class="toc-text">GRPC</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/19/note/" title="无题">无题</a><time datetime="2023-05-19T02:30:59.383Z" title="发表于 2023-05-19 10:30:59">2023-05-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/17/java_8gu/" title="无聊的八股">无聊的八股</a><time datetime="2023-05-17T02:33:15.928Z" title="发表于 2023-05-17 10:33:15">2023-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/16/mame/" title="misc">misc</a><time datetime="2023-05-16T14:52:16.784Z" title="发表于 2023-05-16 22:52:16">2023-05-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/16/linux_note/" title="linux_note">linux_note</a><time datetime="2023-05-16T12:52:15.055Z" title="发表于 2023-05-16 20:52:15">2023-05-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/hello-world/" title="Hello World">Hello World</a><time datetime="2023-05-15T12:37:39.119Z" title="发表于 2023-05-15 20:37:39">2023-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By fallingleaflun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
